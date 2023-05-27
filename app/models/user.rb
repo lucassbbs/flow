@@ -7,4 +7,5 @@ class User < ApplicationRecord
   validates :role, inclusion: { in: ROLES }
   validates :first_name, :last_name, :role, presence: true
   has_many :tasks, dependent: :destroy
+  has_one_attached :photo
 end

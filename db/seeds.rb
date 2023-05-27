@@ -5,3 +5,91 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+Task.destroy_all
+Client.destroy_all
+User.destroy_all
+
+#User
+augusto = User.create!(
+  first_name: "Augusto",
+  last_name: "Medeiros",
+  email: "augusto@mail.com",
+  password: '123456',
+  role: "customer success"
+)
+
+lucas = User.create!(
+  first_name: "Lucas",
+  last_name: "Souza",
+  email: "lucas@mail.com",
+  password: '123456',
+  role: "head"
+)
+
+pedro = User.create!(
+  first_name: "Pedro",
+  last_name: "Abreu",
+  email: "pedro@mail.com",
+  password: '123456',
+  role: "designer"
+)
+
+may = User.create!(
+  first_name: "Mayara",
+  last_name: "Vass",
+  email: "may@mail.com",
+  password: '123456',
+  role: "analista de trafego"
+)
+
+client1 = Client.create(
+  name: 'Onodera'
+)
+
+client2 = Client.create(
+  name: 'Google'
+)
+
+client3 = Client.create(
+  name: 'Amazon'
+)
+
+client4 = Client.create(
+  name: 'Avon'
+)
+
+task1 = Task.create(
+  title: 'Criar arte para campanha do feriado',
+  description: 'Arte Facebook do Natal',
+  status: 'solicitado',
+  step: 'design',
+  deadline: Date.new(2023, 7, 10),
+  archived: false,
+  client: client1,
+  user: pedro,
+  created_by: lucas.id,
+)
+
+task2 = Task.create(
+  title: 'Campanha de divugação da API',
+  description: 'API Zoan',
+  status: 'solicitado',
+  step: 'mídia',
+  deadline: Date.new(2023, 7, 10),
+  archived: false,
+  client: client2,
+  user: augusto,
+  created_by: lucas.id,
+)
+
+task3 = Task.create(
+  title: 'Verificar Performace',
+  description: 'Campanha do Feriado do Natal',
+  status: 'solicitado',
+  step: 'design',
+  deadline: Date.new(2023, 7, 10),
+  archived: false,
+  client: client3,
+  user: may,
+  created_by: lucas.id,
+)
