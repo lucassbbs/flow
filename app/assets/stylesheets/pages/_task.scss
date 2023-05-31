@@ -30,12 +30,40 @@
   color: #d9d9d9;
 }
 
-.task-main-card__status--solicitado{
+.task-main-card__status{
   border: none;
   text-align: center;
   vertical-align: middle;
   border-radius: 25px;
+  padding-top: 7px;
   color: #ffffff;
-  background-color: #6f7af7;
   font-weight: 700;
+}
+
+.task-main-card__status--solicitado{
+  background-color: #6f7af7;
+}
+
+.task-main-card__status--em-andamento{
+  background-color: #460047;
+}
+
+.task-main-card__status--pendente{
+  background-color: #ED2E19;
+}
+
+.task-main-card__status--em-aprovacao{
+  background-color: #A027A3;
+}
+
+.task-main-card__status--aprovado{
+  background-color: #262487;
+}
+
+.task-main-card__status--refacao{
+  background-color: #ED776A;
+}
+
+.task-main-card__status--concluido{
+  background-color: #2739FF;
 }

@@ -30,7 +30,7 @@
     <div class="col-6 task-main-card__column-right">
       <div class="row mb-4 task-main-card__info-field">
         <div class="col-6 task-main-card__label"><p>Status</p></div>
-        <div class="col-6 task-main-card__text task-main-card__status--<%=@task.status.sub(' ','-')%>"><%= @task.status.upcase %></div>
+        <div class="col-6 task-main-card__text task-main-card__status task-main-card__status--<%=@task.status.tr(' çãí','-cai')%>"><%= @task.status.upcase %></div>
       </div>
       <div class="row mb-4 task-main-card__info-field">
         <div class="col-6 task-main-card__label"><p>Anexo</p></div>
@@ -42,5 +42,4 @@
       </div>
     </div>
   </div>
-
 </div>
