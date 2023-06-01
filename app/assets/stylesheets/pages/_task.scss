@@ -1,0 +1,78 @@
+.hidden{
+  display: none;
+}
+
+.task-main-card{
+  padding: 10px;
+  margin: 20px 0 0 20px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.task-main-card__title{
+  color: #7e7e7e;
+}
+
+
+.task-main-card__column-left{
+  border-right: #989898 1px solid;
+}
+
+.task-main-card__info-field{
+  padding: 0 10px 0 0;
+}
+
+.task-main-card__label{
+  color: #7e7e7e;
+}
+
+
+.task-main-card__text{
+  border: 1px solid #d9d9d9;
+  padding: 4px;
+  border-radius: 5px;
+  color: #d9d9d9;
+}
+
+.task-main-card__status{
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  border-radius: 25px;
+  padding-top: 7px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.task-main-card__status--solicitado{
+  background-color: #6f7af7;
+}
+
+.task-main-card__status--em-andamento{
+  background-color: #460047;
+}
+
+.task-main-card__status--pendente{
+  background-color: #ED2E19;
+}
+
+.task-main-card__status--em-aprovacao{
+  background-color: #A027A3;
+}
+
+.task-main-card__status--aprovado{
+  background-color: #262487;
+}
+
+.task-main-card__status--refacao{
+  background-color: #ED776A;
+}
+
+.task-main-card__status--concluido{
+  background-color: #2739FF;
+}
+
+
+.task-main-card__input-text{
+  border: none;
+}

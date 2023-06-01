@@ -1,0 +1,50 @@
+<div class="task-main-card" data-controller="edit-in-task">
+  <div class="hidden" data-edit-in-task-target="clients" ><%= Client.all.map {|client| client.name} %></div>
+  <form id="edit_task_<%=@task.id%>" enctype="multipart/form-data" action="/tasks/<%=@task.id%>" novalidate="novalidate" accept-charset="UTF-8" method="post">
+     <input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="N47B9uuCscf1TMPr56jIyLE9RrA+65tv4TC6Ks+UO96ZLg9hTaqYE9NiAuozjZkjxGGa/AXIYREuZ6KSu427IQ==">
+    <h1 class = "task-main-card__title">Tarefa</h1>
+    <div class="row">
+      <div class="col-6 task-main-card__column-left">
+        <div class="row mb-4 task-main-card__info-field">
+          <div class="col-6 task-main-card__label"><p>Cliente</p></div>
+          <div class="col-6 task-main-card__text" data-edit-in-task-target="clientDiv" data-action="dblclick->edit-in-task#editClient"><%= @task.client.name %></div>
+        </div>
+        <div class="row mb-4 task-main-card__info-field">
+          <div class="col-6 task-main-card__label"><p>Título</p></div>
+          <div class="col-6 task-main-card__text" data-edit-in-task-target="titleDiv" data-action="dblclick->edit-in-task#editTitle"><%= @task.title %></div>
+        </div>
+        <div class="row mb-4 task-main-card__info-field">
+          <div class="col-6 task-main-card__label"><p>Descrição</p></div>
+          <div class="col-6 task-main-card__text"><%= @task.description %></div>
+        </div>
+        <div class="row mb-4 task-main-card__info-field">
+          <div class="col-6 task-main-card__label"><p>Deadline</p></div>
+          <div class="col-6 task-main-card__text"><%= @task.deadline %></div>
+        </div>
+        <div class="row mb-4 task-main-card__info-field">
+          <div class="col-6 task-main-card__label"><p>Solicitante</p></div>
+          <div class="col-6 task-main-card__text"><%= "#{User.find(@task.created_by).first_name} #{User.find(@task.created_by).last_name}  " %></div>
+        </div>
+        <div class="row mb-4 task-main-card__info-field">
+          <div class="col-6 task-main-card__label"><p>Responsável</p></div>
+          <div class="col-6 task-main-card__text"><%= "#{@task.user.first_name} #{@task.user.last_name}" %></div>
+        </div>
+      </div>
+      <div class="col-6 task-main-card__column-right">
+        <div class="row mb-4 task-main-card__info-field">
+          <div class="col-6 task-main-card__label"><p>Status</p></div>
+          <div class="col-6 task-main-card__text task-main-card__status task-main-card__status--<%=@task.status.tr(' çãí','-cai')%>"><%= @task.status.upcase %></div>
+        </div>
+        <div class="row mb-4 task-main-card__info-field">
+          <div class="col-6 task-main-card__label"><p>Anexo</p></div>
+          <div class="col-6 task-main-card__text"><%= @task.client.name %></div>
+        </div>
+        <div class="row mb-4 task-main-card__info-field">
+          <div class="col-6 task-main-card__label"><p>Arquivado</p></div>
+          <div class="col-6 task-main-card__text"><%= @task.archived %></div>
+        </div>
+        <input type="submit" name="commit" value="Salvar" data-disable-with="Salvar">
+      </div>
+    </div>
+  </form>
+</div>
