@@ -1,0 +1,17 @@
+<%= simple_form_for(task) do |f| %>
+  <%= f.input :title, label:  "Título"%>
+  <%= f.input :description, label:  "Descrição"%>
+  <%= f.input :status, :collection => ['solicitado','aprovado','concluído','em andamento','em aprovação','pendente','refação'],label:  "Status" %>
+  <%= f.input :deadline, label:  "Prazo de entrega" %>
+  <%= f.input :file, as: :file, label: "Arquivos" %>
+  <div class='form-submit mt-5'>
+  <% if  request.fullpath.split('/')[-1] == 'edit'%>
+    <%= f.submit 'Editar tarefa' ,:class => 'btn btn-gradient mb-3'%>
+  <% else %>
+    <%= f.submit 'Criar tarefa' ,:class => 'btn btn-gradient mb-3'%>
+  <% end %>
+
+  </div>
+
+
+<% end %>

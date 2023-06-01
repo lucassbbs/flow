@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_05_27_175743) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_30_234312) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -60,6 +60,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_05_27_175743) do
     t.integer "user_id"
     t.integer "created_by"
     t.string "step"
+    t.integer "position"
     t.index ["client_id"], name: "index_tasks_on_client_id"
     t.index ["created_by"], name: "index_tasks_on_created_by"
     t.index ["user_id"], name: "index_tasks_on_user_id"
