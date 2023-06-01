@@ -21,8 +21,8 @@ class TasksController < ApplicationController
   def edit; end
 
   def update
-    raise
     @task.update(task_params)
+    raise
     redirect_to task_path(@task)
   end
 
@@ -46,7 +46,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :description, :status, :deadline, :archived, :created_by, :photo)
+    params.require(:task).permit(:title, :client, :description, :status, :deadline, :archived, :created_by, :photo)
   end
 
   def set_task

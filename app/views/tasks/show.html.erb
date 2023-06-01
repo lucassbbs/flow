@@ -1,5 +1,7 @@
 <div class="task-main-card" data-controller="edit-in-task">
-  <form action="tasks/:<%=@task.id%>" method="POST">
+  <div class="hidden" data-edit-in-task-target="clients" ><%= Client.all.map {|client| client.name} %></div>
+  <form id="edit_task_<%=@task.id%>" enctype="multipart/form-data" action="/tasks/<%=@task.id%>" novalidate="novalidate" accept-charset="UTF-8" method="post">
+     <input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="N47B9uuCscf1TMPr56jIyLE9RrA+65tv4TC6Ks+UO96ZLg9hTaqYE9NiAuozjZkjxGGa/AXIYREuZ6KSu427IQ==">
     <h1 class = "task-main-card__title">Tarefa</h1>
     <div class="row">
       <div class="col-6 task-main-card__column-left">
@@ -9,7 +11,7 @@
         </div>
         <div class="row mb-4 task-main-card__info-field">
           <div class="col-6 task-main-card__label"><p>Título</p></div>
-          <div class="col-6 task-main-card__text"><%= @task.title %></div>
+          <div class="col-6 task-main-card__text" data-edit-in-task-target="titleDiv" data-action="dblclick->edit-in-task#editTitle"><%= @task.title %></div>
         </div>
         <div class="row mb-4 task-main-card__info-field">
           <div class="col-6 task-main-card__label"><p>Descrição</p></div>
@@ -41,7 +43,7 @@
           <div class="col-6 task-main-card__label"><p>Arquivado</p></div>
           <div class="col-6 task-main-card__text"><%= @task.archived %></div>
         </div>
-        <input type="submit" value="Salvar">
+        <input type="submit" name="commit" value="Salvar" data-disable-with="Salvar">
       </div>
     </div>
   </form>
