@@ -32,6 +32,10 @@ export default class extends Controller {
       clientDiv.appendChild(node);
       clientDiv.classList.add("input-active")
     }
+    const submitDiv = document.getElementsByClassName("task-main-card__submit-div")[0];
+    if (submitDiv.classList.contains('hidden')){
+      submitDiv.classList.remove('hidden')
+    }
   }
 
   editTitle() {
@@ -46,6 +50,10 @@ export default class extends Controller {
       node.setAttribute('name', 'task[title]')
       titleDiv.appendChild(node);
       titleDiv.classList.add("input-active")
+    }
+    const submitDiv = document.getElementsByClassName("task-main-card__submit-div")[0];
+    if (submitDiv.classList.contains('hidden')){
+      submitDiv.classList.remove('hidden')
     }
   }
 
@@ -62,6 +70,10 @@ export default class extends Controller {
       descriptionDiv.appendChild(node);
       descriptionDiv.classList.add("input-active")
     }
+    const submitDiv = document.getElementsByClassName("task-main-card__submit-div")[0];
+    if (submitDiv.classList.contains('hidden')){
+      submitDiv.classList.remove('hidden')
+    }
   }
 
   editDeadline() {
@@ -77,6 +89,10 @@ export default class extends Controller {
       node.setAttribute('name', 'task[deadline]')
       deadlineDiv.appendChild(node);
       deadlineDiv.classList.add("input-active")
+    }
+    const submitDiv = document.getElementsByClassName("task-main-card__submit-div")[0];
+    if (submitDiv.classList.contains('hidden')){
+      submitDiv.classList.remove('hidden')
     }
   }
   editResponsible() {
@@ -100,6 +116,10 @@ export default class extends Controller {
       });
       responsibleDiv.appendChild(node);
       responsibleDiv.classList.add("input-active");
+    }
+    const submitDiv = document.getElementsByClassName("task-main-card__submit-div")[0];
+    if (submitDiv.classList.contains('hidden')){
+      submitDiv.classList.remove('hidden')
     }
   }
 

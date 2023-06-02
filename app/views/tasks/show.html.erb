@@ -44,7 +44,9 @@
           <div class="col-6 task-main-card__label"><p>Arquivado</p></div>
           <div class="col-6 task-main-card__text"><%= @task.archived %></div>
         </div>
-        <input type="submit" name="commit" value="Salvar" data-disable-with="Salvar">
+        <div class="task-main-card__submit-div hidden">
+          <input type="submit" name="commit" value="Salvar" data-disable-with="Salvar">
+        </div>
       </div>
     </div>
   </form>
