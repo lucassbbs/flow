@@ -1,5 +1,6 @@
 <div class="task-main-card" data-controller="edit-in-task">
   <div class="hidden" data-edit-in-task-target="clients" ><%= Client.all.map {|client| client.name} %></div>
+  <div class="hidden" data-edit-in-task-target="responsibles" ><%= User.all.map {|user| "#{user.first_name}_#{user.last_name}"} %></div>
   <form id="edit_task_<%=@task.id%>" enctype="multipart/form-data" action="/tasks/<%=@task.id%>" novalidate="novalidate" accept-charset="UTF-8" method="post">
      <input type="hidden" name="_method" value="patch"><input type="hidden" name="authenticity_token" value="N47B9uuCscf1TMPr56jIyLE9RrA+65tv4TC6Ks+UO96ZLg9hTaqYE9NiAuozjZkjxGGa/AXIYREuZ6KSu427IQ==">
     <h1 class = "task-main-card__title">Tarefa</h1>
@@ -15,11 +16,11 @@
         </div>
         <div class="row mb-4 task-main-card__info-field">
           <div class="col-6 task-main-card__label"><p>Descrição</p></div>
-          <div class="col-6 task-main-card__text"><%= @task.description %></div>
+          <div class="col-6 task-main-card__text" data-edit-in-task-target="descriptionDiv" data-action="dblclick->edit-in-task#editDescription"><%= @task.description %></div>
         </div>
         <div class="row mb-4 task-main-card__info-field">
           <div class="col-6 task-main-card__label"><p>Deadline</p></div>
-          <div class="col-6 task-main-card__text"><%= @task.deadline %></div>
+          <div class="col-6 task-main-card__text" data-edit-in-task-target="deadlineDiv" data-action="dblclick->edit-in-task#editDeadline"><%= @task.deadline %></div>
         </div>
         <div class="row mb-4 task-main-card__info-field">
           <div class="col-6 task-main-card__label"><p>Solicitante</p></div>
@@ -27,7 +28,7 @@
         </div>
         <div class="row mb-4 task-main-card__info-field">
           <div class="col-6 task-main-card__label"><p>Responsável</p></div>
-          <div class="col-6 task-main-card__text"><%= "#{@task.user.first_name} #{@task.user.last_name}" %></div>
+          <div class="col-6 task-main-card__text" data-edit-in-task-target="responsibleDiv" data-action="dblclick->edit-in-task#editResponsible"><%= "#{@task.user.first_name} #{@task.user.last_name}" %></div>
         </div>
       </div>
       <div class="col-6 task-main-card__column-right">
