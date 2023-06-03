@@ -20,10 +20,14 @@
 
 .task-main-card__info-field{
   padding: 0 10px 0 0;
+  display: flex;
 }
+
+
 
 .task-main-card__label{
   color: #7e7e7e;
+  width: 150px;
 }
 
 
@@ -32,7 +36,9 @@
   padding: 4px;
   border-radius: 5px;
   color: #d9d9d9;
+  width: 100%;
 }
+
 
 .task-main-card__status{
   border: none;
@@ -82,6 +88,10 @@
   margin-left: 100px;
 }
 
+.task-main-card__input{
+  width: 100%;
+}
+
 .task-main-card__submit-save{
   padding: 5px 15px;
   border-radius: 10px;
@@ -90,4 +100,18 @@
   color: white;
   font-weight: 500;
 
+}
+
+.task-main-card__input-select-status{
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+  background: transparent;
+}
+
+.task-main-card__input-option-status{
+  color: black;
+  font-weight: 700;
+  text-align: center;
+  background: transparent;
 }
