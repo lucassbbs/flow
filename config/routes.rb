@@ -1,8 +1,15 @@
 Rails.application.routes.draw do
   devise_for :users
-  root to: "pages#home"
+  devise_scope :user do
+    authenticated :user do
+      root "tasks#index", as: :authenticated_root
+    end
+    unauthenticated :user do
+      root 'pages#home'
+end
+  end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
-  resources :tasks
+  resources :tasks, except: :index
   resources :clients
   # Defines the root path route ("/")
   # root "articles#index"
