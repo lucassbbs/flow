@@ -14,13 +14,6 @@
   <body>
     <%= render "shared/navbar" %>
     <%= render "shared/flashes" %>
-    <div class="row m-0">
-      <div class="col-3 sidebar">
-        <%= render "shared/sidebar" %>
-      </div>
-      <div class="col-9">
-        <%= yield %>
-      </div>
-    </div>
+      <%= yield %>
   </body>
 </html>

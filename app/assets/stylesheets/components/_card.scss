@@ -1,0 +1,20 @@
+.cards {
+  display: flex;
+	flex-wrap: nowrap;
+	overflow-x: scroll;
+  min-height: 70vh;
+}
+
+.card-category {
+  min-width: 280px;
+	height: 40px;
+	margin: 15px;
+}
+
+.card-task {
+  background-color: blue;
+  height: auto;
+  margin: 15px;
+  padding: 10px;
+  color: white;
+}
