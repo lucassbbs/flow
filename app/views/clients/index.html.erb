@@ -1,0 +1,36 @@
+<div class="container">
+<!-- TODO: Insert inside the `.container`, above the first `.row` -->
+<div class="row justify-content-between">
+<div class="col-2">
+  <h2>Cliente</h2>
+  <%# Coloca Destino do botão Cadastrar  %>
+  <%= link_to "Cadastrar", tasks_path, class: "btn_violet" %>
+</div>
+  <div class="col-6 my-3">
+    <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
+      <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Digite uma palavra-chave"
+        %>
+      <%= submit_tag "Search", name: "", class: "btn_blue ms-2" %>
+    <% end %>
+  </div>
+</div>
+  <hr>
+    <% @clients.each do |client| %>
+      <div class="row justify-content-center mb-3">
+        <div class="col-6">
+          <div class="card-clients">
+            <img src="https://img.myloview.com.br/adesivos/humano-homem-pessoa-avatar-perfil-do-usuario-vector-icon-ilustracao-700-80389264.jpg" />
+              <div class="ml-auto p-5 w-100">
+                <div class="client-info d-flex justify-content-between align-items-center">
+                  <h2><%= client.name %></h2>
+                  <%= link_to "Visualizar", tasks_path, class: "btn_blue" %>
+                </div>
+              </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+</div>
