@@ -84,23 +84,22 @@
 }
 
 .task-main-card__submit-div{
-  margin-top: 170px;
-  margin-left: 100px;
+  // margin-top: 170px;
+  // margin-left: 100px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
 }
 
 .task-main-card__input{
   width: 100%;
 }
 
-.task-main-card__submit-save{
-  padding: 5px 15px;
-  border-radius: 10px;
-  border: none;
-  background-color: #262487;
-  color: white;
-  font-weight: 500;
-
+.task-main-card__input:focus{
+  outline: none !important;
 }
+
 
 .task-main-card__input-select-status{
   color: #ffffff;
@@ -114,4 +113,76 @@
   font-weight: 700;
   text-align: center;
   background: transparent;
+}
+
+
+.task-main-card__step{
+  border: none;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 7px;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+.task-main-card__step--backlog{
+  background-color: #ED2E19;
+}
+
+.task-main-card__step--customer-success{
+  background-color: #A027A3;
+}
+
+.task-main-card__step--copy-writing{
+  background-color: #460047;
+}
+
+.task-main-card__step--design{
+  background-color: #262487;
+}
+
+.task-main-card__step--midia{
+  background-color: #2739FF;
+}
+
+.task-main-card__step--inbound{
+  background-color: #6F7AF7;
+}
+
+.task-main-card__step--performance{
+  background-color: #ED776A;
+}
+
+.task-main-card__input-select-step{
+  color: #ffffff;
+  font-weight: 700;
+  text-align: center;
+  background: transparent;
+}
+
+.task-main-card__input-option-step{
+  color: black;
+  font-weight: 700;
+  text-align: center;
+  background: transparent;
+}
+
+.task-main-card__submit-save{
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #262487;
+  color: white;
+  font-weight: 500;
+
+}
+
+.task-main-card__submit-cancel{
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: 1px solid #6B6767;
+  background-color: #ECECEC;
+  color: #6B6767;
+  font-weight: 500;
+
 }

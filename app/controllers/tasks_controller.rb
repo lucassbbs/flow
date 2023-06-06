@@ -38,6 +38,7 @@ class TasksController < ApplicationController
       client_name = params[:client]
       params[:client] = Client.where(name:client_name)[0]
     end
+    params[:archived] = params[:archived]=='true'? true:false
     if params[:user]
       responsible_array_name = params[:user].split('_')
       responsible_first_name = responsible_array_name[0]
@@ -68,7 +69,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :client, :description, :status, :deadline, :archived, :created_by, :photo, :user)
+    params.require(:task).permit(:title, :client, :description, :status, :deadline, :archived, :created_by, :photo, :user, :step)
   end
 
   def set_task
