@@ -1,38 +1,81 @@
-<div class='container mt-3'>
-<h1>Painel</h1>
-</div>
+<div class='mt-3 ms-3'>
+  <h1 class= 'ms-3' >Dashboard</h1>
 
-<div class="row justify-content-right m-0">
-  <div class="col-sm-4 my-4">
-    <%= form_with url: tasks_path, method: :get, class: "d-flex" do %>
-      <%= text_field_tag :query,
-            params[:query],
-            class: "form-control",
-            placeholder: "Buscar tarefa"
-        %>
-      <%= submit_tag "Buscar", name: "", class: "btn btn-gradient ms-1" %>
-    <% end %>
-  </div>
-</div>
 
-<div class="cards">
-  <% Task::STEPS.each do |step|  %>
-  <div>
-
-    <div class="card-category" style="background-color: blue ">
-      <%= step %>
-    </div>
-      <% @tasks.select do |t|%>
-        <% if t.step == step %>
-          <div class="card-task">
-          <p> <%= t.title %> </p>
-          <p> <%= t.deadline %> </p>
-          <p> <%= User.find(t.created_by).first_name %> </p>
-          <p> <%= t.user.first_name %> </p>
-          <p> <%= t.status %> </p>
-          </div>
-        <% end %>
+  <div class="row justify-content-right m-0">
+    <div class="col-sm-4 my-4">
+      <%= form_with url: "/", method: :get, class: "d-flex" do |form| %>
+        <%# text_field_tag :query,
+              params[:query],
+              class: "form-control",
+              placeholder: "Buscar tarefa"
+          %>
+        <%= form.select :client_name, [""] + Client.all.pluck(:name) %>
+        <%= form.select :responsible_id, [""] + Task.test %>
+        <%= form.submit "Buscar", class: "btn btn-gradient ms-1" %>
       <% end %>
+    </div>
   </div>
-  <%end %>
+
+  <div class="cards">
+    <% Task.steps.each_key do |step|  %>
+    <div class="step-container test">
+
+      <div class="card-category filtered" style="background-color: <%= Task.step_colors["#{step}_color"] %> ">
+        <%= Task.steps[step] %>
+      </div>
+
+      <div id="results" class="results-step test">
+        <% @tasks.select do |t|%>
+          <% if t.step == step %>
+            <div class="card-task ghost">
+              <p> <%= t.title %> </p>
+              <div class="row">
+                <div class="col-3">
+                  <p>Cliente</p>
+                </div>
+                <div class="col-9">
+               <p class="text-box"> <%= t.client.name %> </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <p>Status</p>
+                </div>
+                <div class="col-9">
+               <p class="task-main-card__status--<%=t.status.tr(' çãí','-cai')%>"> <%= t.status %> </p>
+               --
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <p>Prazo</p>
+                </div>
+                <div class="col-9">
+               <p class="text-box"> <%= t.deadline %> </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <p>Resp...</p>
+                </div>
+                <div class="col-9">
+               <p class="text-box"> <%= t.user.first_name %> </p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-3">
+                  <p>Soli...</p>
+                </div>
+                <div class="col-9">
+               <p class="text-box"> <%= User.find(t.created_by).first_name %> </p>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+    <%end %>
+  </div>
 </div>

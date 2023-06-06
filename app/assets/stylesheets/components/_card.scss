@@ -3,18 +3,42 @@
 	flex-wrap: nowrap;
 	overflow-x: scroll;
   min-height: 70vh;
+  background-color: white !important;
 }
 
 .card-category {
   min-width: 280px;
 	height: 40px;
-	margin: 15px;
+	margin: 0px;
+  border-radius: 10px 10px 0 0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 500;
 }
 
 .card-task {
-  background-color: blue;
+  background-color: white;
   height: auto;
   margin: 15px;
   padding: 10px;
-  color: white;
+  color: rgb(54, 54, 54);
+  border-radius: 10px;
+}
+
+#results {
+  cursor: grab;
+}
+
+#results:active {
+  cursor: grabbing;
+}
+
+#results .ghost {
+  filter: grayscale(1);
+}
+
+.text-box {
+  background-color: #f6f7fb;
 }
