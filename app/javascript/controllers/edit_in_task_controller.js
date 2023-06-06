@@ -4,7 +4,8 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
 
   static targets = ['clientDiv','titleDiv','clients', 'descriptionDiv','deadlineDiv',
-                    'responsibles','responsibleDiv','statusDiv']
+                    'responsibles','responsibleDiv','statusDiv','archivedInput',
+                  'stepDiv']
 
   connect() {
     console.log('entrou');
@@ -129,14 +130,17 @@ export default class extends Controller {
       statusDiv.innerHTML = '';
       const node = document.createElement("select");
       node.classList.add("task-main-card__input-select-status");
+      node.classList.add("task-main-card__input");
       node.value = statusName;
-      node.setAttribute('id', 'task_user')
-      node.setAttribute('name', 'task[user]')
+      node.setAttribute('data-action','change->edit-in-task#styleStatus')
+      node.setAttribute('id', 'task_status')
+      node.setAttribute('name', 'task[status]')
       statussArray.forEach(status => {
         let statusNode = document.createElement("option");
         statusNode.value = status;
-        statusNode.innerHTML = status;
-        node.classList.add('task-main-card__input');
+        statusNode.innerHTML = status.toUpperCase();
+        statusNode.classList.add('task-main-card__input');
+        statusNode.classList.add('task-main-card__input-option-status');
         node.appendChild(statusNode);
 
       });
@@ -146,6 +150,64 @@ export default class extends Controller {
     this.showButtons();
   }
 
+  styleStatus(){
+    const statusDiv = this.statusDivTarget;
+    const selectStatus = statusDiv.firstChild;
+    const selectedOption = selectStatus.selectedOptions[0].value;
+    const statusCollorClass =Array.from(statusDiv.classList).filter(name => name.includes('task-main-card__status--'))
+    statusDiv.classList.remove(statusCollorClass);
+    const selectedOptionCorrected = selectedOption.replace(' ','-').replace('ç','c').replace('í','i').replace('ã','a');
+    const statusNewClass = `task-main-card__status--${selectedOptionCorrected}`;
+    statusDiv.classList.add(statusNewClass);
+
+    console.log();
+  }
+
+  editArchived(){
+    this.showButtons();
+
+  }
+
+  editStep() {
+    const stepArray = ['backlog', 'customer success', 'copy writing', 'design', 'mídia', 'inbound', 'performance'];
+    const stepDiv = this.stepDivTarget;
+    if (!stepDiv.classList.contains('input-active')) {
+      const stepName = stepDiv.innerHTML;
+      stepDiv.innerHTML = '';
+      const node = document.createElement("select");
+      node.classList.add("task-main-card__input-select-step");
+      node.classList.add("task-main-card__input");
+      node.value = stepName;
+      node.setAttribute('data-action','change->edit-in-task#styleStep')
+      node.setAttribute('id', 'task_step')
+      node.setAttribute('name', 'task[step]')
+      stepArray.forEach(step => {
+        let stepNode = document.createElement("option");
+        stepNode.value = step;
+        stepNode.innerHTML = step.toUpperCase();
+        stepNode.classList.add('task-main-card__input');
+        stepNode.classList.add('task-main-card__input-option-step');
+        node.appendChild(stepNode);
+
+      });
+      stepDiv.appendChild(node);
+      stepDiv.classList.add("input-active");
+    }
+    this.showButtons();
+  }
+
+  styleStep(){
+    const stepDiv = this.stepDivTarget;
+    const selectStep = stepDiv.firstChild;
+    const selectedOption = selectStep.selectedOptions[0].value;
+    const stepCollorClass =Array.from(stepDiv.classList).filter(name => name.includes('task-main-card__step--'))
+    stepDiv.classList.remove(stepCollorClass);
+    const selectedOptionCorrected = selectedOption.replace(' ','-').replace('ç','c').replace('í','i').replace('ã','a');
+    const stepNewClass = `task-main-card__step--${selectedOptionCorrected}`;
+    stepDiv.classList.add(stepNewClass);
+
+    console.log();
+  }
 
 
 }
