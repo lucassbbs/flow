@@ -15,13 +15,6 @@ class TasksController < ApplicationController
     else
       @tasks = Task.all
     end
-    #TODO: arrumar filtros de seleção
-    # if params[:category]
-    #   @category = params[:category]
-    #   @foods = Food.where(category: params[:category])
-    # else
-    #   @foods = Food.all
-    # end
   end
 
   def show; end
@@ -50,7 +43,9 @@ class TasksController < ApplicationController
   end
 
   def create
-    @task = Task.new(task_params)
+    params = task_params
+    params[:user] = User.find(params[:user])
+    @task = Task.new(params)
     @task.status = 'solicitado'
     @task.archived = false
     @task.created_by = current_user.id

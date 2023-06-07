@@ -11,7 +11,7 @@
         <div class="col-6 task-main-card__column-left">
           <div class="mb-5 task-main-card__info-field">
             <div class="task-main-card__label"><p>Etapa</p></div>
-            <div class="task-main-card__text task-main-card__step task-main-card__step--<%=@task.step.tr(' çãí','-cai')%>" data-edit-in-task-target="stepDiv" data-action="dblclick->edit-in-task#editStep"><%= @task.step.capitalize %></div>
+            <div class="task-main-card__text task-main-card__step task-main-card__step--<%=@task.step.tr(' çãí','-cai')%>" data-edit-in-task-target="stepDiv" data-action="dblclick->edit-in-task#editStep"><%= @task.step%></div>
           </div>
           <div class="mb-5 task-main-card__info-field">
             <div class="task-main-card__label"><p>Cliente</p></div>
@@ -55,7 +55,7 @@
             <input id="archived_boolean_attribute" name="task[archived]" type="checkbox" <%= @task.archived ? "checked":""%> data-action="edit-in-task#editArchived" value="true" />
           </div>
           <div class="task-main-card__submit-div hidden mt-5">
-            <input class= "task-main-card__submit-cancel"type="submit" name="commit" value="Cancelar" data-disable-with="Cancelar">
+            <%= link_to "Cancelar", task_path(@task), class:'task-main-card__submit-cancel' %>
             <input class= "task-main-card__submit-save"type="submit" name="commit" value="Salvar" data-disable-with="Salvar">
           </div>
         </div>
