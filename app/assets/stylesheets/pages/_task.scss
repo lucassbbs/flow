@@ -1,5 +1,5 @@
 .hidden{
-  display: none;
+  display: none!important;
 }
 
 .task-main-card{
@@ -123,7 +123,9 @@
   padding-top: 7px;
   color: #ffffff;
   font-weight: 700;
+  text-transform: capitalize;
 }
+
 
 .task-main-card__step--backlog{
   background-color: #ED2E19;
@@ -158,6 +160,7 @@
   font-weight: 700;
   text-align: center;
   background: transparent;
+  text-transform: capitalize;
 }
 
 .task-main-card__input-option-step{
@@ -165,6 +168,7 @@
   font-weight: 700;
   text-align: center;
   background: transparent;
+  text-transform: capitalize;
 }
 
 .task-main-card__submit-save{
@@ -184,5 +188,15 @@
   background-color: #ECECEC;
   color: #6B6767;
   font-weight: 500;
+  text-decoration: none;
 
+}
+
+.task-main-card__submit-save{
+  padding: 5px 15px;
+  border-radius: 10px;
+  border: none;
+  background-color: #262487;
+  color: white;
+  font-weight: 500;
 }

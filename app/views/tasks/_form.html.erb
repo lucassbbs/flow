@@ -1,17 +1,49 @@
 <%= simple_form_for(task) do |f| %>
-  <%= f.input :title, label:  "Título"%>
-  <%= f.input :description, label:  "Descrição"%>
-  <%= f.input :status, :collection => ['solicitado','aprovado','concluído','em andamento','em aprovação','pendente','refação'],label:  "Status" %>
-  <%= f.input :deadline, label:  "Prazo de entrega" %>
-  <%= f.input :file, as: :file, label: "Arquivos" %>
-  <div class='form-submit mt-5'>
-  <% if  request.fullpath.split('/')[-1] == 'edit'%>
-    <%= f.submit 'Editar tarefa' ,:class => 'btn btn-gradient mb-3'%>
-  <% else %>
-    <%= f.submit 'Criar tarefa' ,:class => 'btn btn-gradient mb-3'%>
-  <% end %>
+  <div class="row mt-5" data-controller="create-task">
+    <div class="col-6 task-main-card__column-left">
+        <%= f.input :step, label:'Etapa' ,
+        wrapper_html: {class: "mb-5 task-main-card__info-field"},
+        label_html:{class:"task-main-card__label"},
+        input_html:{class:"task-main-card__text task-main-card__input-select-step", "data-create-task-target":"stepInput","data-action":"change->create-task#styleStep"} %>
 
+        <%= f.input :title, label:'Título' ,
+        wrapper_html: {class: "mb-5 task-main-card__info-field"},
+        label_html:{class:"task-main-card__label"},
+        input_html:{class:"task-main-card__text"} %>
+
+        <%= f.input :description, label:'Descrição' ,
+        wrapper_html: {class: "mb-5 task-main-card__info-field"},
+        label_html:{class:"task-main-card__label"},
+        input_html:{class:"task-main-card__text"} %>
+
+        <%= f.input :deadline,html5: true,as: :date ,label:'Deadline' ,
+        wrapper_html: {class: "mb-5 task-main-card__info-field"},
+        label_html:{class:"task-main-card__label"},
+        input_html:{class:"task-main-card__text"} %>
+
+        <%= f.input :user, label:'Solicitante' , collection: User.where(role:'head').map {|user| ["#{user.first_name} #{user.last_name}",user.id]},
+        wrapper_html: {class: "mb-5 task-main-card__info-field"},
+        label_html:{class:"task-main-card__label"},
+        input_html:{class:"task-main-card__text"} %>
+
+        <%= f.input :user, label:'Responsável' , collection: User.all.map {|user| ["#{user.first_name} #{user.last_name}",user.id]},
+        wrapper_html: {class: "mb-5 task-main-card__info-field"},
+        label_html:{class:"task-main-card__label"},
+        input_html:{class:"task-main-card__text"} %>
+    </div>
+    <div class="col-6 task-main-card__column-right">
+        <%= f.input :file, as: :file, label: "Arquivos",
+        wrapper_html: {class: "mb-5 task-main-card__info-field"},
+        label_html:{class:"task-main-card__label"},
+        input_html:{class:"task-main-card__text"} %>
+
+        <div class='task-main-card__submit-div'>
+          <%= f.submit 'Criar tarefa' ,:class => 'task-main-card__submit-save'%>
+        </div>
+
+    </div>
   </div>
+
 
 
 <% end %>

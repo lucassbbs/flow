@@ -18,6 +18,9 @@ export default class extends Controller {
       submitDiv.classList.remove('hidden');
     }
   }
+  CapitalizeFirstLetter(string) {
+    return string.charAt(0).toUpperCase() + string.slice(1);
+  }
 
   editClient() {
     const a = this.clientsTarget.innerHTML;
@@ -126,8 +129,8 @@ export default class extends Controller {
     const statussArray = ['solicitado','aprovado','concluído','em andamento','em aprovação','pendente','refação'];
     const statusDiv = this.statusDivTarget
     if (!statusDiv.classList.contains('input-active')) {
-      const statusName = statusDiv.innerHTML;
-      statusDiv.innerHTML = '';
+      const statusName = statusDiv.innerText;
+      statusDiv.innerText = '';
       const node = document.createElement("select");
       node.classList.add("task-main-card__input-select-status");
       node.classList.add("task-main-card__input");
@@ -142,7 +145,7 @@ export default class extends Controller {
         statusNode.classList.add('task-main-card__input');
         statusNode.classList.add('task-main-card__input-option-status');
         node.appendChild(statusNode);
-
+        node.value = statusName.toLowerCase();
       });
       statusDiv.appendChild(node);
       statusDiv.classList.add("input-active");
@@ -171,9 +174,10 @@ export default class extends Controller {
   editStep() {
     const stepArray = ['backlog', 'customer success', 'copy writing', 'design', 'mídia', 'inbound', 'performance'];
     const stepDiv = this.stepDivTarget;
+    const stepName = stepDiv.innerText;
     if (!stepDiv.classList.contains('input-active')) {
-      const stepName = stepDiv.innerHTML;
-      stepDiv.innerHTML = '';
+      //const stepName = stepDiv.innerHTML;
+      stepDiv.innerText = '';
       const node = document.createElement("select");
       node.classList.add("task-main-card__input-select-step");
       node.classList.add("task-main-card__input");
@@ -184,12 +188,13 @@ export default class extends Controller {
       stepArray.forEach(step => {
         let stepNode = document.createElement("option");
         stepNode.value = step;
-        stepNode.innerHTML = step.toUpperCase();
+        stepNode.innerHTML = this.CapitalizeFirstLetter(step);
         stepNode.classList.add('task-main-card__input');
         stepNode.classList.add('task-main-card__input-option-step');
         node.appendChild(stepNode);
 
       });
+      node.value = stepName.toLowerCase();
       stepDiv.appendChild(node);
       stepDiv.classList.add("input-active");
     }
@@ -205,9 +210,8 @@ export default class extends Controller {
     const selectedOptionCorrected = selectedOption.replace(' ','-').replace('ç','c').replace('í','i').replace('ã','a');
     const stepNewClass = `task-main-card__step--${selectedOptionCorrected}`;
     stepDiv.classList.add(stepNewClass);
-
-    console.log();
   }
+
 
 
 }

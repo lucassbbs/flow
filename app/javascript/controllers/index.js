@@ -3,13 +3,12 @@
 // ./bin/rails generate stimulus controllerName
 
 import { application } from "./application"
-import Sortable from "sortablejs"
+
+import CreateTaskController from "./create_task_controller"
+application.register("create-task", CreateTaskController)
 
 import EditInTaskController from "./edit_in_task_controller"
 application.register("edit-in-task", EditInTaskController)
 
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
-
-import { initSortable } from "./init_sortable"
-initSortable()
