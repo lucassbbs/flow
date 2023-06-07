@@ -1,0 +1,18 @@
+<%= simple_form_for(client) do |c| %>
+  <%= c.input :name  ,label:  "Nome"%>
+  <%= c.input :photo, as: :file, label: "Foto do Cliente" %>
+  <div class='form-submit mt-5'>
+  <% if  request.fullpath.split('/')[-1] == 'edit'%>
+    <%= c.submit 'Editar Cliente' ,:class => 'btn btn_blue mb-3'%>
+  <% else %>
+  <div class="d-flex justify-content-around">
+    <%# <%= c.submit 'Deletar' ,:class => 'btn btn_red mb-3'%> %>
+    <%= c.submit 'Cancelar' ,:class => 'btn btn_blue mb-3'%>
+    <%= c.submit 'Salvar' ,:class => 'btn btn_blue mb-3'%>
+  </div>
+  <% end %>
+
+  </div>
+
+
+<% end %>
