@@ -46,7 +46,7 @@ class TasksController < ApplicationController
       params[:user] = User.where(first_name: responsible_first_name, last_name: responsible_last_name)[0]
     end
     @task.update(params)
-    redirect_to task_path(@task)
+    redirect_to tasks_path
   end
 
   def create

@@ -17,18 +17,16 @@
     </div>
   </div>
 
-  <div class="cards">
+      <div class="cards">
     <% Task.steps.each_key do |step|  %>
-    <div class="step-container test">
-
-      <div class="card-category filtered" style="background-color: <%= Task.step_colors["#{step}_color"] %> ">
+    <div class="step-container test" data-filter = <%= step %>>
+      <div class="card-category filtered"  style="background-color: <%= Task.step_colors["#{step}_color"] %> ">
         <%= Task.steps[step] %>
       </div>
-
       <div id="results" class="results-step test">
         <% @tasks.select do |t|%>
           <% if t.step == step %>
-            <div class="card-task ghost">
+            <div class="card-task ghost" data-task-id = <%=t.id%>>
               <p> <%= t.title %> </p>
               <div class="row">
                 <div class="col-3">
