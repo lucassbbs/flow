@@ -11,7 +11,7 @@ class Task < ApplicationRecord
   enum steps: {
     backlog: "Backlog",
     customer_success: "Customer Success",
-    copy_writing: "Copy",
+    "copy_writing" => "Copy",
     design: "Design",
     mídia: "Mídia",
     inbound: "Inbound",
