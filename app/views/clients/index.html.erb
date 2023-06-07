@@ -3,8 +3,7 @@
 <div class="row justify-content-between">
 <div class="col-2">
   <h2>Cliente</h2>
-  <%# Coloca Destino do botão Cadastrar  %>
-  <%= link_to "Cadastrar", tasks_path, class: "btn_violet" %>
+  <%= link_to "Cadastrar", new_client_path, class: "btn_violet" %>
 </div>
   <div class="col-6 my-3">
     <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
@@ -26,7 +25,7 @@
               <div class="ml-auto p-5 w-100">
                 <div class="client-info d-flex justify-content-between align-items-center">
                   <h2><%= client.name %></h2>
-                  <%= link_to "Visualizar", tasks_path, class: "btn_blue" %>
+                  <%= link_to "Visualizar", client_path(client), class: "btn_blue" %>
                 </div>
               </div>
           </div>
