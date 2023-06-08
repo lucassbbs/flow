@@ -17,23 +17,26 @@
     </div>
   </div>
 
-      <div class="cards">
+  <div class="cards" data-controller="sortable" >
     <% Task.steps.each_key do |step|  %>
-    <div class="step-container test" data-filter = <%= step %>>
-      <div class="card-category filtered"  style="background-color: <%= Task.step_colors["#{step}_color"] %> ">
-        <%= Task.steps[step] %>
-      </div>
-      <div id="results" class="results-step test">
+      <div class="step-container" >
+        <div class="card-category" style="background-color: <%= Task.step_colors["#{step}_color"] %> ">
+          <%= Task.steps[step] %>
+        </div>
+        <div class="tasks-conteiner" data-sortable-target="container" data-filter=<%= step %>>
         <% @tasks.select do |t|%>
           <% if t.step == step %>
-            <div class="card-task ghost" data-task-id = <%=t.id%>>
-              <p> <%= t.title %> </p>
+            <div id="results" class="card-task handle"
+                data-action="dragstart->sortable#dragstart dragover->sortable#dragover dragenter->sortable#dragenter drop->sortable#drop dragend->sortable#dragend"
+                draggable="true"
+                data-url="<%= task_path(t) %>">
+              <p><%= t.title %></p>
               <div class="row">
                 <div class="col-3">
                   <p>Cliente</p>
                 </div>
                 <div class="col-9">
-               <p class="text-box"> <%= t.client.name %> </p>
+                <p class="text-box"> <%= t.client.name %> </p>
                 </div>
               </div>
               <div class="row">
@@ -41,8 +44,7 @@
                   <p>Status</p>
                 </div>
                 <div class="col-9">
-               <p class="task-main-card__status--<%=t.status.tr(' çãí','-cai')%>"> <%= t.status %> </p>
-               --
+                  <p class="task-main-card__status--<%=t.status.tr(' çãí','-cai')%>"> <%= t.status %> </p>
                 </div>
               </div>
               <div class="row">
@@ -50,7 +52,7 @@
                   <p>Prazo</p>
                 </div>
                 <div class="col-9">
-               <p class="text-box"> <%= t.deadline %> </p>
+                  <p class="text-box"> <%= t.deadline.strftime("%d/%m/%Y") %> </p>
                 </div>
               </div>
               <div class="row">
@@ -58,7 +60,7 @@
                   <p>Resp...</p>
                 </div>
                 <div class="col-9">
-               <p class="text-box"> <%= t.user.first_name %> </p>
+                  <p class="text-box"> <%= t.user.first_name %> </p>
                 </div>
               </div>
               <div class="row">
@@ -66,14 +68,14 @@
                   <p>Soli...</p>
                 </div>
                 <div class="col-9">
-               <p class="text-box"> <%= User.find(t.created_by).first_name %> </p>
+                  <p class="text-box"> <%= User.find(t.created_by).first_name %> </p>
                 </div>
               </div>
             </div>
           <% end %>
         <% end %>
+          </div>
       </div>
-    </div>
     <%end %>
   </div>
 </div>
