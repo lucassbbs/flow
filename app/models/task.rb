@@ -5,7 +5,7 @@ class Task < ApplicationRecord
   #validates :status, inclusion: { in: STATUS }
   #validates :step, inclusion: { in: STEPS }
   belongs_to :user
-  belongs_to :client
+  belongs_to :client, dependent: :destroy
   has_one_attached :photo
 
   enum steps: {
