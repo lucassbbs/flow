@@ -13,7 +13,8 @@ class ClientsController < ApplicationController
     @client = Client.new
   end
 
-  def edit;end
+  def edit
+  end
 
   def show
     @client = Client.find(params[:id])
@@ -38,10 +39,10 @@ class ClientsController < ApplicationController
     redirect_to clients_path, status: :see_other
   end
 
-private
+  private
 
   def client_params
-    params.require(:client).permit(:name,:photo)
+    params.require(:client).permit(:name, :photo)
   end
 
   def set_client
