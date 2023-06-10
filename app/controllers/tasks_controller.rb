@@ -44,9 +44,11 @@ class TasksController < ApplicationController
 
   def create
     params = task_params
-    params[:user] = User.find(params[:user])
+    params[:user] = User.find(params[:user].to_i)
+    params[:client] = Client.find(params[:client].to_i)
     @task = Task.new(params)
     @task.status = 'solicitado'
+    @task.step = :backlog
     @task.archived = false
     @task.created_by = current_user.id
     if @task.save

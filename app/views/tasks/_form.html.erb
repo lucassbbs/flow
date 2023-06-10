@@ -26,6 +26,11 @@
         label_html:{class:"task-main-card__label"},
         input_html:{class:"task-main-card__text"} %>
 
+        <%= f.input :client, label:'Cliente' , collection: Client.all.map {|client| ["#{client.name}", client.id.to_i]},
+        wrapper_html: {class: "mb-5 task-main-card__info-field"},
+        label_html:{class:"task-main-card__label"},
+        input_html:{class:"task-main-card__text"} %>
+
         <%= f.input :user, label:'Responsável' , collection: User.all.map {|user| ["#{user.first_name} #{user.last_name}",user.id]},
         wrapper_html: {class: "mb-5 task-main-card__info-field"},
         label_html:{class:"task-main-card__label"},
