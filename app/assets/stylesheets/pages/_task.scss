@@ -200,3 +200,15 @@
   color: white;
   font-weight: 500;
 }
+
+.index-form form {
+  width: 500px;
+}
+
+.index-form select {
+  width: 500px;
+  margin-right: 16px;
+  border: solid 1px rgb(243, 243, 243);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+  border-radius: 5px;
+}

@@ -5,28 +5,9 @@ class Task < ApplicationRecord
   #validates :status, inclusion: { in: STATUS }
   #validates :step, inclusion: { in: STEPS }
   belongs_to :user
-  belongs_to :client, dependent: :destroy
+  belongs_to :client
+  belongs_to :step
   has_one_attached :photo
-
-  enum steps: {
-    backlog: "Backlog",
-    customer_success: "Customer Success",
-    "copy_writing" => "Copy",
-    design: "Design",
-    mídia: "Mídia",
-    inbound: "Inbound",
-    performance: "Performance"
-  }
-
-  enum step_color: {
-    backlog_color: "#ED2E19",
-    customer_success_color: "#A027A3",
-    copy_writing_color: "#460047",
-    design_color: "#262487",
-    mídia_color: "#2739FF",
-    inbound_color: "#6F7AF7",
-    performance_color: "#ED776A"
-  }
 
   def self.test
     users_id = self.all.pluck(:user_id)

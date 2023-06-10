@@ -6,7 +6,6 @@ export default class extends Controller {
   static values = {}
 
   connect() {
-    console.log('vai')
     this.variable = this.element.querySelector(".card-task").dataset.sortableUrlValue
     this.containerTargets.forEach((cont) => {
       Sortable.create(cont, {

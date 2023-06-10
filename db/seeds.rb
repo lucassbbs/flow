@@ -7,6 +7,7 @@
 #   Character.create(name: "Luke", movie: movies.first)
 Task.destroy_all
 Client.destroy_all
+Step.destroy_all
 User.destroy_all
 
 #User
@@ -58,11 +59,60 @@ client4 = Client.create(
   name: 'Avon'
 )
 
+step1 = Step.create(
+  name: 'Backlog',
+  color: '#ED2E19',
+  user_id: may.id,
+  index: 1
+)
+
+step2 = Step.create(
+  name: 'Customer Success',
+  color: '#A027A3',
+  user_id: pedro.id,
+  index: 2
+)
+
+step3 = Step.create(
+  name: 'Copy',
+  color: '#460047',
+  user_id: augusto.id,
+  index: 3
+)
+
+step4 = Step.create(
+  name: 'Design',
+  color: '#262487',
+  user_id: lucas.id,
+  index: 4
+)
+
+step5 = Step.create(
+  name: 'Mídia',
+  color: '#2739FF',
+  user_id: may.id,
+  index: 5
+)
+
+step6 = Step.create(
+  name: 'Inbound',
+  color: '#6F7AF7',
+  user_id: pedro.id,
+  index: 6
+)
+
+step7 = Step.create(
+  name: 'Performance',
+  color: '#ED776A',
+  user_id: augusto.id,
+  index: 7
+)
+
 task1 = Task.create(
   title: 'Criar arte para campanha do feriado',
   description: 'Arte Facebook do Natal',
   status: 'solicitado',
-  step: 'design',
+  step_id: step2.id,
   deadline: Date.new(2023, 7, 10),
   archived: false,
   client: client1,
@@ -74,7 +124,7 @@ task2 = Task.create(
   title: 'Campanha de divugação da API',
   description: 'API Zoan',
   status: 'solicitado',
-  step: 'mídia',
+  step_id: step4.id,
   deadline: Date.new(2023, 7, 10),
   archived: false,
   client: client2,
@@ -86,7 +136,7 @@ task3 = Task.create(
   title: 'Verificar Performace',
   description: 'Campanha do Feriado do Natal',
   status: 'solicitado',
-  step: 'design',
+  step_id: step3.id,
   deadline: Date.new(2023, 7, 10),
   archived: false,
   client: client3,

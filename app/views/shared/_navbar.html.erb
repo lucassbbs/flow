@@ -1,14 +1,10 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag "https://cdn.awsli.com.br/1755/1755179/logo/3832773334.png" %>
+      <%= image_tag "efloow.png" %>
     <% end %>
 
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <div class="collapse navbar-collapse dropdown" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item active">
@@ -19,19 +15,19 @@
           </li>
 
           <li class="nav-item dropdown">
-            <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <%# <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+            <a href="#" class="avatar dropdown-toggle" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
              <% if current_user.photo.attached? %>
               <%= cl_image_tag current_user.photo.key, width: 40, height: 40, crop: :thumb, gravity: :face, radius: 'max',class: 'avatar-navbar-img'%>
             <% else %>
               <%= image_tag "no-photo-user.jpg", class: "avatar", alt: "dropdown menu" %>
             <% end %>
             </a>
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
               <%= link_to "Editar perfil", edit_user_registration_path, class: "dropdown-item" %>
               <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
+
         <% else %>
           <div class="nav-item d-flex">
             <%= link_to "Criar conta", new_user_registration_path, class: "nav-link" %>

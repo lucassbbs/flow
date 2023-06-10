@@ -2,6 +2,8 @@ class TasksController < ApplicationController
   before_action :set_task, only: %i[show edit destroy update]
 
   def index
+    @steps = Step.all.order(index: :asc)
+    @client = params[:client_name]
     if params[:client_name] && params[:client_name] != ""
       @tasks = Task.includes(:client).where("clients.name = ?", params[:client_name]).references(:clients)
       if params[:responsible_id] && params[:responsible_id] != ""
@@ -51,6 +53,7 @@ class TasksController < ApplicationController
     @task.step = :backlog
     @task.archived = false
     @task.created_by = current_user.id
+    raise
     if @task.save
       redirect_to task_path(@task)
     else

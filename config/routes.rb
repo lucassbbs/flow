@@ -8,9 +8,12 @@ Rails.application.routes.draw do
       root 'pages#home'
     end
   end
+  patch "/steps/update", to: "steps#reorder"
+  get "/setup", to: "pages#setup"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :tasks, except: :index
   resources :clients
+  resources :steps, except: [:show]
   # Defines the root path route ("/")
   # root "articles#index"
   patch '/tasks', to: 'tasks#index'
