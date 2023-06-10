@@ -14,3 +14,16 @@
 body {
   background-color: white;
 }
+
+#steps li {
+  cursor: grab;
+}
+
+#steps li:active {
+  cursor: grabbing;
+}
+
+#steps li.ghost {
+  filter: grayscale(1);
+  opacity: 0.5;
+}

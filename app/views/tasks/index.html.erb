@@ -1,77 +1,67 @@
 <div class='mt-3 ms-3'>
   <h1 class= 'ms-3' >Dashboard</h1>
+  <hr>
 
 
-  <div class="row justify-content-right m-0">
-    <div class="col-sm-4 my-4">
-      <%= form_with url: "/", method: :get, class: "d-flex" do |form| %>
-        <%# text_field_tag :query,
-              params[:query],
-              class: "form-control",
-              placeholder: "Buscar tarefa"
-          %>
-        <%= form.select :client_name, [""] + Client.all.pluck(:name) %>
-        <%= form.select :responsible_id, [""] + Task.test %>
+  <div class="search row justify-content-right m-0">
+    <div class=" index-form col-sm-4 my-4">
+      <%= form_with url: "/", method: :get, class: "d-flex", style: "width: 600px;" do |form| %>
+        <%= form.select :client_name, options_for_select(Client.all.pluck(:name), selected: request.query_parameters[:client_name] != "" && request.query_parameters[:client_name].present? ? Client.find_by_name(request.query_parameters[:client_name])&.name : "Cliente"), { include_blank: 'Cliente' }, class: "custom-select" %>
+        <%= form.select :responsible_id, options_for_select(Task.test, selected: request.query_parameters[:responsible_id] != "" && request.query_parameters[:responsible_id].present? ? User.find(request.query_parameters[:responsible_id])&.id : "Responsável"), { include_blank: 'Responsável' }, class: "custom-select" %>
         <%= form.submit "Buscar", class: "btn btn-gradient ms-1" %>
       <% end %>
     </div>
   </div>
 
   <div class="cards" data-controller="sortable" >
-    <% Task.steps.each_key do |step|  %>
+    <% @steps.each do |step|  %>
       <div class="step-container" >
-        <div class="card-category" style="background-color: <%= Task.step_colors["#{step}_color"] %> ">
-          <%= Task.steps[step] %>
+        <div class="card-category" style="background-color: <%= step.color %> ">
+          <%= step.name %>
         </div>
         <div class="tasks-conteiner" data-sortable-target="container" data-filter=<%= step %>>
         <% @tasks.select do |t|%>
-          <% if t.step == step %>
-            <div id="results" class="card-task handle"
-                data-action="dragstart->sortable#dragstart dragover->sortable#dragover dragenter->sortable#dragenter drop->sortable#drop dragend->sortable#dragend"
-                draggable="true"
-                data-url="<%= task_path(t) %>">
-              <p><%= t.title %></p>
-              <div class="row">
-                <div class="col-3">
-                  <p>Cliente</p>
+          <% if t.step_id == step.id %>
+            <%= link_to task_path(t), class:"text-decoration-none" do %>
+              <div id="results" class="card-task handle"
+                  data-action="dragstart->sortable#dragstart dragover->sortable#dragover dragenter->sortable#dragenter drop->sortable#drop dragend->sortable#dragend"
+                  draggable="true"
+                  data-url="<%= task_path(t) %>">
+                <p class="title-box"><%= t.title %></p>
+                <div class="row">
+                  <div class="col-3">
+                    <p>Cliente</p>
+                  </div>
+                  <div class="col-9">
+                  <p class="text-box"> <%= t.client.name %> </p>
+                  </div>
                 </div>
-                <div class="col-9">
-                <p class="text-box"> <%= t.client.name %> </p>
+                <div class="row">
+                  <div class="col-3">
+                    <p>Status</p>
+                  </div>
+                  <div class="col-9">
+                    <p class="text-box task-main-card__status--<%=t.status.tr(' çãí','-cai')%> text-white"> <%= t.status %> </p>
+                  </div>
                 </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  <p>Status</p>
+                <div class="row">
+                  <div class="col-3">
+                    <p>Prazo</p>
+                  </div>
+                  <div class="col-9">
+                    <p class="text-box"> <%= t.deadline.strftime("%d/%m/%Y") %> </p>
+                  </div>
                 </div>
-                <div class="col-9">
-                  <p class="task-main-card__status--<%=t.status.tr(' çãí','-cai')%>"> <%= t.status %> </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  <p>Prazo</p>
-                </div>
-                <div class="col-9">
-                  <p class="text-box"> <%= t.deadline.strftime("%d/%m/%Y") %> </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  <p>Resp...</p>
-                </div>
-                <div class="col-9">
-                  <p class="text-box"> <%= t.user.first_name %> </p>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-3">
-                  <p>Soli...</p>
-                </div>
-                <div class="col-9">
-                  <p class="text-box"> <%= User.find(t.created_by).first_name %> </p>
+                <div class="row">
+                  <div class="col-3">
+                    <p>Resp...</p>
+                  </div>
+                  <div class="col-9">
+                    <p class="text-box"> <%= t.user.first_name %> </p>
+                  </div>
                 </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
           </div>

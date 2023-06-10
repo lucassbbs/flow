@@ -1,0 +1,7 @@
+<ul id="steps">
+  <% @steps.each do |step| %>
+    <li style="background-color: <%= step.color %>; list-style-type: none">
+      <%= step.name %>
+    </li>
+  <% end %>
+</ul>
