@@ -1,3 +1,23 @@
-<div class="container">
-  <h1 class="row justify-content-center mb-3"><%= @client.name %></h1>
+<div class="container mt-3">
+  <h1>Editar Cliente</h1>
+  <hr>
+  <div class="d-flex justify-content-center">
+    <div class="card_client_create">
+      <%= simple_form_for(@client) do |c| %>
+        <%= c.input :name, label: "Nome" %>
+        <%= c.input :photo, as: :file, label: "Foto do Cliente" %>
+        <div class='form-submit mt-5'>
+          <% if request.fullpath.split('/')[-1] == 'edit' %>
+            <%= c.submit 'Editar Cliente', class: 'btn btn_blue mb-3' %>
+          <% else %>
+            <div class="d-flex justify-content-between">
+              <%= link_to "Voltar", clients_path(@client), class: "btn btn_blue mb-3" %>
+              <%= c.submit 'Salvar', class: 'btn btn_blue mb-3', onclick: "window.location.href='#{clients_path(@client)}'" %>
+              <%= button_to "Deletar",{controller: :clients, action: "destroy", id: @client.id}, method: :delete, data: { confirm: 'Tem certeza que deseja deletar este cliente?' }, class: "btn btn_red mb-3" %>
+            </div>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>

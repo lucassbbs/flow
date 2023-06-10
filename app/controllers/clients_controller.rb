@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+  before_action :set_client, only: %i[show edit destroy update]
 
   def index
     if params[:query].present?
@@ -20,7 +21,7 @@ class ClientsController < ApplicationController
 
   def update
     @client.update(client_params)
-    redirect_to clients_path(@client)
+    redirect_to client_path(@client)
   end
 
   def create
@@ -36,14 +37,14 @@ class ClientsController < ApplicationController
     @client.destroy
     redirect_to clients_path, status: :see_other
   end
-end
 
 private
 
-def client_params
-  params.require(:client).permit(:name,:photo)
-end
+  def client_params
+    params.require(:client).permit(:name,:photo)
+  end
 
-def set_client
-  @client = Client.find(params[:id])
+  def set_client
+    @client = Client.find(params[:id])
+  end
 end
