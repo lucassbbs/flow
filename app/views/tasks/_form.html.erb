@@ -1,7 +1,8 @@
 <%= simple_form_for(task) do |f| %>
   <div class="row mt-5" data-controller="create-task">
+  <div class="hidden" data-create-task-target="steps" ><%= Step.all.to_json %></div>
     <div class="col-6 task-main-card__column-left">
-        <%= f.input :step, label:'Etapa' ,
+        <%= f.input :step_id, label:'Etapa', collection: Step.all.map { |step| [step.name,step.id]} ,
         wrapper_html: {class: "mb-5 task-main-card__info-field"},
         label_html:{class:"task-main-card__label"},
         input_html:{class:"task-main-card__text task-main-card__input-select-step", "data-create-task-target":"stepInput","data-action":"change->create-task#styleStep"} %>
@@ -21,20 +22,14 @@
         label_html:{class:"task-main-card__label"},
         input_html:{class:"task-main-card__text"} %>
 
-        <%= f.input :user, label:'Solicitante' , collection: User.where(role:'head').map {|user| ["#{user.first_name} #{user.last_name}",user.id]},
-        wrapper_html: {class: "mb-5 task-main-card__info-field"},
-        label_html:{class:"task-main-card__label"},
-        input_html:{class:"task-main-card__text"} %>
 
         <%= f.input :client, label:'Cliente' , collection: Client.all.map {|client| ["#{client.name}", client.id.to_i]},
         wrapper_html: {class: "mb-5 task-main-card__info-field"},
         label_html:{class:"task-main-card__label"},
         input_html:{class:"task-main-card__text"} %>
 
-        <%= f.input :user, label:'Responsável' , collection: User.all.map {|user| ["#{user.first_name} #{user.last_name}",user.id]},
-        wrapper_html: {class: "mb-5 task-main-card__info-field"},
-        label_html:{class:"task-main-card__label"},
-        input_html:{class:"task-main-card__text"} %>
+
+
     </div>
     <div class="col-6 task-main-card__column-right">
         <%= f.input :file, as: :file, label: "Arquivos",

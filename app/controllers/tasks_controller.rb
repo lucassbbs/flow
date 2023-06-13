@@ -41,19 +41,19 @@ class TasksController < ApplicationController
       params[:user] = User.where(first_name: responsible_first_name, last_name: responsible_last_name)[0]
     end
     @task.update(params)
-    redirect_to tasks_path
+    redirect_to authenticated_root_path
   end
 
   def create
     params = task_params
-    params[:user] = User.find(params[:user].to_i)
+    step = Step.find(params[:step_id])
+    params[:user] = User.find(step.user_id)
     params[:client] = Client.find(params[:client].to_i)
     @task = Task.new(params)
     @task.status = 'solicitado'
-    @task.step = :backlog
+
     @task.archived = false
     @task.created_by = current_user.id
-    raise
     if @task.save
       redirect_to task_path(@task)
     else
@@ -69,7 +69,7 @@ class TasksController < ApplicationController
   private
 
   def task_params
-    params.require(:task).permit(:title, :client, :description, :status, :deadline, :archived, :created_by, :photo, :user, :step)
+    params.require(:task).permit(:title, :client, :description, :status, :deadline, :archived, :created_by, :photo, :user, :step_id)
   end
 
   def set_task
