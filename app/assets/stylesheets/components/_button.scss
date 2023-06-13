@@ -2,13 +2,49 @@
   color: white;
   padding: 8px 24px;
   border-radius: 4px;
-  font-weight: bold;
-  background: linear-gradient(#167FFB, #0F60C4);
+  font-weight: 600;
+  background: linear-gradient(#2030d8, #2739FF);
   transition: background 0.3s ease;
-  border: 1px solid #0F60C4;
+  text-decoration: none;
 }
 
 .btn-gradient:hover {
-  background: linear-gradient(#147EFF, #0F67DA);
+  background: linear-gradient(#2030d8, #2739FF);
   color: white;
+}
+
+.btn-navbar {
+  color: #0F60C4;
+  padding: 8px 24px;
+  border-radius: 4px;
+  background: white;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.btn-navbar:hover {
+  background: white;
+  opacity: 0.9;
+  color: #0F60C4;
+}
+
+.btn-ghost {
+  color: white;
+  border: 1px solid #ffffff;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-ghost:hover {
+  background: white;
+  opacity: 0.9;
+}
+
+.selection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -49,3 +49,142 @@
   font-weight: 700;
   font-size: 17px;
 }
+
+.cards-home {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+  padding: 20px;
+}
+
+// Smallest device
+@media (min-width: 100px) and (max-width: 575px) {
+  .cards-home {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Small devices (landscape phones, 576px and up)
+@media (min-width: 576px) {
+  .cards-home {
+    grid-template-columns: 1fr;
+  }
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) {
+  .cards-home {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) {
+  .cards-home {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) {
+  .cards-home {
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  }
+}
+
+.card-category-home {
+  height: 180px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  color: white;
+  border: 1px solid #ffffff;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.card-category-home:hover {
+  border: 2px solid #ae2626;
+
+}
+
+.container cards-home-1 {
+  background-color: rgb(236, 239, 248);
+}
+
+
+.card-product {
+  overflow: hidden;
+  height: 400px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+}
+
+.card-product img {
+  height: 100%;
+  width: 600px;
+  object-fit: cover;
+}
+
+.card-product h2 {
+  color: rgb(49, 49, 49);
+  font-size: 30px;
+  font-weight: bold;
+  margin-left: 50px;
+}
+
+.card-product strong {
+  color: #0F60C4;
+}
+
+.card-product p {
+  color: rgb(49, 49, 49);
+  font-size: 20px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 8px;
+  margin-left: 50px;
+}
+
+.card-product-end {
+  overflow: hidden;
+  height: 400px;
+  background: white;
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
+  color: rgb(49, 49, 49);
+}
+
+.card-product-end img {
+  height: 100%;
+  width: 700px;
+  object-fit: cover;
+}
+
+.card-product-end h2 {
+  font-size: 40px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-product-end strong {
+  color: #0F60C4;
+}
+
+.card-product-end p {
+  font-size: 20px;
+  line-height: 1.4;
+  opacity: .7;
+  margin-bottom: 0;
+  margin-top: 25px;
+}
