@@ -8,6 +8,7 @@
     "@popperjs/core": "^2.11.7",
     "bootstrap": "^5.2.3",
     "sortablejs": "^1.15.0",
+    "typed.js": "^2.0.16",
     "webpack": "^5.84.1",
     "webpack-cli": "^5.1.1"
   },

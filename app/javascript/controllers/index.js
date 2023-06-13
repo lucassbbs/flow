@@ -16,42 +16,8 @@ application.register("hello", HelloController)
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
 
-/*import { initSortable } from "./plugins/init_sortable"
-initSortable()*/
+import SortableStepsController from "./sortable_steps_controller"
+application.register("sortable-steps", SortableStepsController)
 
-const list = document.querySelector("#steps")
-
-import Sortable from "sortablejs"
-const csrfToken = document.head.querySelector("[name='csrf-token']").content;
-
-const initSortable = () => {
-  Sortable.create(list, {
-    ghostClass: "ghost",
-    animation: 150,
-    onEnd: (event) => {
-      alert(`${event.oldIndex} moved to ${event.newIndex}`)
-      fetch(`/steps/update?old_index=${event.oldIndex + 1}&new_index=${event.newIndex + 1}`, {
-        method: "PATCH",
-        headers: {
-          'Accept': 'application/json',
-          'Content-Type': 'application/json',
-          'X-Requested-With': 'XMLHttpRequest',
-          'X-CSRF-Token': csrfToken
-        },
-        body: JSON.stringify({steps: {old_index: event.oldIndex, new_index: event.newIndex}})
-      })
-      .then((response) => {
-        if (response.ok) {
-          return response.json()
-        } else {
-          alert("Erro na requisição")
-        }
-      })
-      .then((data) => {
-        console.log(data)
-      })
-    }
-  })
-}
-
-initSortable()
+import TypedJsController from "./typed_js_controller"
+application.register("typed-js", TypedJsController)
