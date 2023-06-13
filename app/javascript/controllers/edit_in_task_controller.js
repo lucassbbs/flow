@@ -5,10 +5,12 @@ export default class extends Controller {
 
   static targets = ['clientDiv','titleDiv','clients', 'descriptionDiv','deadlineDiv',
                     'responsibles','responsibleDiv','statusDiv','archivedInput',
-                  'stepDiv']
+                  'stepDiv','steps']
 
   connect() {
     console.log('entrou');
+    const steps = JSON.parse(this.stepsTarget.innerHTML);
+    console.log(steps);
     //console.log(this.clientDivTarget);
   }
 
@@ -17,9 +19,6 @@ export default class extends Controller {
     if (submitDiv.classList.contains('hidden')){
       submitDiv.classList.remove('hidden');
     }
-  }
-  CapitalizeFirstLetter(string) {
-    return string.charAt(0).toUpperCase() + string.slice(1);
   }
 
   editClient() {
@@ -99,31 +98,6 @@ export default class extends Controller {
     }
     this.showButtons();
   }
-  editResponsible() {
-    const a = this.responsiblesTarget.innerHTML;
-    const responsiblesArray = a.slice(1,-1).replaceAll('"','').split(', ');
-    const responsibleDiv = this.responsibleDivTarget
-    if (!responsibleDiv.classList.contains('input-active')) {
-      const responsibleName = responsibleDiv.innerHTML;
-      responsibleDiv.innerHTML = '';
-      const node = document.createElement("select");
-      node.classList.add("task-main-card__input-text");
-      node.value = responsibleName;
-      node.setAttribute('id', 'task_user')
-      node.setAttribute('name', 'task[user]')
-      responsiblesArray.forEach(responsible => {
-        let responsibleNode = document.createElement("option");
-        responsibleNode.value = responsible;
-        responsibleNode.innerHTML = responsible.replace('_',' ');
-        node.classList.add('task-main-card__input');
-        node.appendChild(responsibleNode);
-
-      });
-      responsibleDiv.appendChild(node);
-      responsibleDiv.classList.add("input-active");
-    }
-    this.showButtons();
-  }
 
   editStatus() {
     const statussArray = ['solicitado','aprovado','concluído','em andamento','em aprovação','pendente','refação'];
@@ -168,33 +142,36 @@ export default class extends Controller {
 
   editArchived(){
     this.showButtons();
-
   }
 
   editStep() {
-    const stepArray = ['backlog', 'customer success', 'copy writing', 'design', 'mídia', 'inbound', 'performance'];
+    const steps = JSON.parse(this.stepsTarget.innerHTML)
     const stepDiv = this.stepDivTarget;
-    const stepName = stepDiv.innerText;
     if (!stepDiv.classList.contains('input-active')) {
+      const stepName = stepDiv.innerText;
       //const stepName = stepDiv.innerHTML;
       stepDiv.innerText = '';
       const node = document.createElement("select");
       node.classList.add("task-main-card__input-select-step");
       node.classList.add("task-main-card__input");
-      node.value = stepName;
+      const nodeValue = steps.filter(step => step.name == stepName)[0].id;
+      node.value = nodeValue;
+      console.log(nodeValue);
+      console.log(node);
       node.setAttribute('data-action','change->edit-in-task#styleStep')
-      node.setAttribute('id', 'task_step')
-      node.setAttribute('name', 'task[step]')
-      stepArray.forEach(step => {
+      node.setAttribute('id', 'task_step_id')
+      node.setAttribute('name', 'task[step_id]')
+      steps.forEach(step => {
         let stepNode = document.createElement("option");
-        stepNode.value = step;
-        stepNode.innerHTML = this.CapitalizeFirstLetter(step);
+        stepNode.value = step.id;
+        stepNode.innerHTML = step.name;
         stepNode.classList.add('task-main-card__input');
         stepNode.classList.add('task-main-card__input-option-step');
         node.appendChild(stepNode);
 
       });
-      node.value = stepName.toLowerCase();
+      node.value = nodeValue;
+      console.log(stepName);
       stepDiv.appendChild(node);
       stepDiv.classList.add("input-active");
     }
@@ -202,14 +179,20 @@ export default class extends Controller {
   }
 
   styleStep(){
+    const steps = JSON.parse(this.stepsTarget.innerHTML)
+    const users = JSON.parse(this.responsiblesTarget.innerHTML)
     const stepDiv = this.stepDivTarget;
+    const responsibleDiv = this.responsibleDivTarget
+
     const selectStep = stepDiv.firstChild;
-    const selectedOption = selectStep.selectedOptions[0].value;
-    const stepCollorClass =Array.from(stepDiv.classList).filter(name => name.includes('task-main-card__step--'))
-    stepDiv.classList.remove(stepCollorClass);
-    const selectedOptionCorrected = selectedOption.replace(' ','-').replace('ç','c').replace('í','i').replace('ã','a');
-    const stepNewClass = `task-main-card__step--${selectedOptionCorrected}`;
-    stepDiv.classList.add(stepNewClass);
+    const selectedOptionId = selectStep.selectedOptions[0].value;
+    const selectedOption = steps.filter(selectedOption => selectedOption.id == selectedOptionId)[0];
+    const color = selectedOption.color;
+    stepDiv.style.backgroundColor = color;
+    const responsible = users.filter(responsible => responsible.id == selectedOption.user_id)[0];
+    console.log(selectedOption.name);
+    console.log(responsible);
+    responsibleDiv.innerHTML = `${responsible.first_name} ${responsible.last_name}`;
   }
 
 
