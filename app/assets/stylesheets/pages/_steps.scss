@@ -1,11 +1,14 @@
 .invisible{
   visibility: hidden;
 }
-.step-index__step-li{
+
+
+
+.step-index__step-li-inner-div{
   padding: 15px;
-  border-radius: 10px;
+  width: 100%;
   display: flex;
-  color: white;
+  color: black;
   justify-content: space-between;
 }
 
