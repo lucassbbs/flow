@@ -48,3 +48,20 @@
   justify-content: center;
   align-items: center;
 }
+
+.btn-gray {
+  color: rgb(100, 100, 100);
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  background: rgb(231, 231, 231);
+  border: 1px solid rgb(100, 100, 100);
+  transition: background 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-gray:hover {
+  background: rgb(231, 231, 231);
+  color: rgb(100, 100, 100);
+  border: 1px solid rgb(100, 100, 100);
+}
