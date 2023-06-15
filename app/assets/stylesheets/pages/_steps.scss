@@ -1,0 +1,15 @@
+.invisible{
+  visibility: hidden;
+}
+.step-index__step-li{
+  padding: 15px;
+  border-radius: 10px;
+  display: flex;
+  color: white;
+  justify-content: space-between;
+}
+
+.step_index__step-li-buttons{
+  display: flex;
+  flex-direction: column;
+}

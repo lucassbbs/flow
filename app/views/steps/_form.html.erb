@@ -1,0 +1,12 @@
+<%= simple_form_for(step) do |s| %>
+  <%= s.input :name, label: "Etapa" %>
+  <%= s.input :color, as: :color, label: "Cor", input_html: { style: 'width:100px;height:70px;' } %>
+  <%= s.input :user_id, label:'Responsável' , collection: User.all.map {|user| ["#{user.first_name} #{user.last_name}",user.id]}%>
+  <div class='form-submit mt-5'>
+    <div class="d-flex justify-content-around">
+      <%# <%= c.submit 'Deletar', :class => 'btn btn_red mb-3'%>
+      <%= s.submit 'Salvar', :class => 'btn btn_blue mb-3' %>
+      <%= link_to "Cancelar", steps_path, class: "btn btn_blue mb-3" %>
+    </div>
+  </div>
+<% end %>

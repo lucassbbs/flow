@@ -8,7 +8,7 @@ Rails.application.routes.draw do
       root 'pages#home'
     end
   end
-  patch "/steps/update", to: "steps#reorder"
+  patch "/steps", to: "steps#reorder"
   get "/setup", to: "pages#setup"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :tasks, except: :index
