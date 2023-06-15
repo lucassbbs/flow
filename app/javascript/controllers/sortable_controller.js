@@ -3,7 +3,6 @@ import Sortable from "sortablejs"
 
 export default class extends Controller {
   static targets = ["container"]
-  static values = {}
 
   connect() {
     this.variable = this.element.querySelector(".card-task").dataset.sortableUrlValue

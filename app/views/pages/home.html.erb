@@ -1,7 +1,6 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/background.png);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.8)), url(<%= image_path 'banner.jpg' %>);">
   <div class="container">
-    <h1><strong>eFloow</strong> a melhor plataforma para</h1>
-    <h2><span data-controller="typed-js"></span></h2>
+    <h1><strong>eFloow</strong> a melhor plataforma para <span data-controller="typed-js"></span></h1>
     <p>Uma solução completa para criar workflows sem burocracia e otimizar seu tempo.</p>
     <a class="btn-ghost" href="#">Solicite uma demonstração</a>
     <a class="btn-gradient" href="#">Comece já</a>
@@ -18,7 +17,7 @@
   <%= image_tag "home-problema.jpg" %>
 </div>
 
-<div class="container card-product mt-5">
+<div class="container card-product my-5">
   <%= image_tag "home-ideia.jpg" %>
   <div class="card-product-infos">
     <h2>O eFloow é a solução perfeita para <strong>otimizar as operações</strong> da sua empresa.</h2>
@@ -26,53 +25,70 @@
   </div>
 </div>
 
-<div class="container-home mt-5">
+<div class="container-home pt-2">
   <div>
     <h2 class="h2-home mt-5"><strong>Tudo</strong> o que você precisa para criar</h2>
     <h2 class="h2-home mb-3"><strong>todo tipo de fluxo de trabalho</strong></h2>
   </div>
   <div class=" container cards-home">
-    <div class="card-category-home">
-      <div>
-        <i class="fa-solid fa-megaphone"></i>
-      </div>
-      <div>
-       Marketing
-      </div>
-    </div>
-
-    <div class="card-category-home">
-      <div>
-        <i class="fa-regular fa-diagram-project"></i>
-      </div>
-      <div>
-        Gestão de projetos
+    <div class="card-category-home box-1 d-flex justify-content-center align-items-center">
+      <div class="text-center">
+        <i class="fa-solid fa-bullhorn image-1"></i>
+        <br>
+        <br>
+        <span>Marketing</span>
       </div>
     </div>
 
-    <div class="card-category-home">
-    <i class="fa-solid fa-object-group"></i>
-      Design
+    <div class="card-category-home box-2 d-flex justify-content-center align-items-center">
+      <div class="text-center">
+        <i class="fa-solid fa-diagram-project image-2"></i>
+        <br>
+        <span>Gestão de projetos</span>
+      </div>
     </div>
 
-    <div class="card-category-home">
-    <i class="fa-solid fa-list-check"></i>
-      Gestão de tarefas
+    <div class="card-category-home box-3 d-flex justify-content-center align-items-center">
+      <div class="text-center">
+        <i class="fa-solid fa-object-group image-3"></i>
+        <br>
+        <br>
+        <span>Design</span>
+      </div>
     </div>
 
-    <div class="card-category-home">
-    <i class="fa-solid fa-code"></i>
-      TI
+    <div class="card-category-home box-4 d-flex justify-content-center align-items-center">
+      <div class="text-center">
+         <i class="fa-solid fa-list-check image-4"></i>
+        <br>
+        <span>Gestão de tarefas</span>
+      </div>
     </div>
 
-    <div class="card-category-home">
-    <i class="fa-regular fa-messages-dollar"></i>
-      Vendas e CRM
+    <div class="card-category-home box-5 d-flex justify-content-center align-items-center">
+      <div class="text-center">
+         <i class="fa-solid fa-code image-5"></i>
+        <br>
+        <br>
+        <span>TI</span>
+      </div>
     </div>
 
-    <div class="card-category-home">
-    <i class="fa-solid fa-gears"></i>
-      Operações
+    <div class="card-category-home box-6 d-flex justify-content-center align-items-center">
+      <div class="text-center">
+         <i class="fa-solid fa-cart-arrow-down image-6"></i>
+        <br>
+        <span>Vendas e CRM</span>
+      </div>
+    </div>
+
+    <div class="card-category-home box-7 d-flex justify-content-center align-items-center">
+      <div class="text-center">
+         <i class="fa-solid fa-gears image-7"></i>
+        <br>
+        <br>
+        <span>Operações</span>
+      </div>
     </div>
     <a class="btn-gradient selection mt-5" href="#">Comece já</a>
   </div>

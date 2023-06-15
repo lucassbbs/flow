@@ -3,6 +3,9 @@
   <hr>
   <div class="d-flex justify-content-center">
     <div class="card_client_create">
+      <div class="d-flex justify-content-center">
+        <img src="<%= url_for(@client.photo) %>" alt="client_photo" class="img-fluid rounded-circle mb-3 shadow-lg" style="width: 200px; height: 200px; object-fit: cover;">
+      </div>
       <%= simple_form_for(@client) do |c| %>
         <%= c.input :name, label: "Nome" %>
         <%= c.input :photo, as: :file, label: "Foto do Cliente" %>
@@ -12,7 +15,7 @@
           <% else %>
             <div class="d-flex justify-content-between">
               <%= link_to "Voltar", clients_path(@client), class: "btn btn_blue mb-3" %>
-              <%= c.submit 'Salvar', class: 'btn btn_blue mb-3', onclick: "window.location.href='#{clients_path(@client)}'" %>
+              <%= c.submit 'Salvar', class: 'btn btn_blue mb-3' %>
               <%= link_to "Deletar", client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja deletar este cliente?" }, class: "btn btn_red mb-3" %>
             </div>
           <% end %>

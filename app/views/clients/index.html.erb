@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row justify-content-between">
     <div class="col-2">
-      <h2>Cliente</h2>
+      <h2 class="title-home ms-3">Cliente</h2>
       <%= link_to "Cadastrar", new_client_path, class: "btn_violet" %>
     </div>
     <div class="col-6 my-3">
@@ -19,7 +19,7 @@
           <% if client.photo.attached? %>
             <%= cl_image_tag(client.photo.key) %>
           <% else %>
-            <p>imagem indisponível</p>
+            <%= link_to "Photo.jpg", client_path(client), class: "btn bolder_img" %>
           <% end %>
           <div class="ml-auto p-5 w-100">
             <div class="client-info d-flex justify-content-between align-items-center">

@@ -4,9 +4,10 @@ import Typed from "typed.js"
 // Connects to data-controller="typed-js"
 export default class extends Controller {
   connect() {
+    console.log("estou aqui")
     new Typed(this.element, {
       strings: ["Agências de Marketing", "Eugências", "Startups", "Agência de Eventos"],
-      typeSpeed: 50,
+      typeSpeed: 100,
       loop: true
     })
   }
