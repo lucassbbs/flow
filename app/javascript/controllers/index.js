@@ -13,11 +13,11 @@ application.register("edit-in-task", EditInTaskController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import TypedJsController from "./typed_js_controller"
+application.register("typed-js", TypedJsController)
+
 import SortableController from "./sortable_controller"
 application.register("sortable", SortableController)
 
-import SortableStepsController from "./sortable_steps_controller"
-application.register("sortable-steps", SortableStepsController)
-
-import TypedJsController from "./typed_js_controller"
-application.register("typed-js", TypedJsController)
+/*import SortableStepsController from "./sortable_steps_controller"
+application.register("sortable-steps", SortableStepsController)*/

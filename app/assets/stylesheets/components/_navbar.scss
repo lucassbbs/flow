@@ -13,5 +13,12 @@
 }
 
 .nav-link{
-  color:white;
+  display: inline-block;
+  color:rgb(232, 232, 232);
+  font-weight: 600;
+}
+
+.nav-link:hover{
+  color:rgb(255, 255, 255);
+  font-weight: 800;
 }
