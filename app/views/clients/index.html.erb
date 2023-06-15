@@ -19,7 +19,7 @@
           <% if client.photo.attached? %>
             <%= cl_image_tag(client.photo.key) %>
           <% else %>
-            <p>imagem indisponível</p>
+            <%= link_to "Photo.jpg", client_path(client), class: "btn bolder_img" %>
           <% end %>
           <div class="ml-auto p-5 w-100">
             <div class="client-info d-flex justify-content-between align-items-center">
