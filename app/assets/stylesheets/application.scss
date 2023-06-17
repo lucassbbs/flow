@@ -13,6 +13,9 @@
 
 body {
   background-color: white;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
 }
 
 #steps li {
