@@ -31,7 +31,7 @@ class TasksController < ApplicationController
   def edit; end
 
   def update
-    params = task_params
+    new_step_id = params[:task][:step].to_i
     if params[:client]
       client_name = params[:client]
       params[:client] = Client.where(name:client_name)[0]
@@ -43,10 +43,11 @@ class TasksController < ApplicationController
       responsible_last_name = responsible_array_name[1]
       params[:user] = User.where(first_name: responsible_first_name, last_name: responsible_last_name)[0]
     end
-    @task.update(params)
-    redirect_to authenticated_root_path
+    @task.step_id = new_step_id
+    if @task.save
+      redirect_to tasks_path(@task)
+    end
   end
-
   def create
     params = task_params
     step = Step.find(params[:step_id])

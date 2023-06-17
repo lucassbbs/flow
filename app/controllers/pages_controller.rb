@@ -9,4 +9,8 @@ class PagesController < ApplicationController
 
   def demo
   end
+
+  def user
+    @users = User.all
+  end
 end

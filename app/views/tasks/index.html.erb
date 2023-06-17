@@ -19,7 +19,7 @@
         <div class="card-category" style="background-color: <%= step.color %> ">
           <%= step.name %>
         </div>
-        <div class="tasks-conteiner" data-sortable-target="container" data-filter=<%= step %>>
+        <div class="tasks-conteiner" data-sortable-target="container" data-filter=<%= step.id %>>
         <% @tasks.select do |t|%>
           <% if t.step_id == step.id %>
             <%= link_to task_path(t), class:"text-decoration-none" do %>
