@@ -5,12 +5,14 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require "open-uri"
+
 Task.destroy_all
 Client.destroy_all
 Step.destroy_all
 User.destroy_all
 
-#User
+# User
 augusto = User.create!(
   first_name: "Augusto",
   last_name: "Medeiros",
@@ -43,22 +45,40 @@ may = User.create!(
   role: "analista de trafego"
 )
 
-client1 = Client.create(
+# Client
+file = URI.open("https://hotsites.pagolivre.com.br/Onodera-GiftCard/assets/images/Logo.jpg")
+client1 = Client.new(
   name: 'Onodera'
 )
+client1.photo.attach(io: file, filename: "onodera.png", content_type: "image/png")
+client1.save
 
-client2 = Client.create(
+file = URI.open("https://blog.hubspot.com/hubfs/image8-2.jpg")
+client2 = Client.new(
   name: 'Google'
 )
+client2.photo.attach(io: file, filename: "google.png", content_type: "image/png")
+client2.save
 
-client3 = Client.create(
-  name: 'Amazon'
+file = URI.open("https://www.shutterstock.com/image-photo/montreal-canada-february-28-2017-260nw-590095607.jpg")
+client3 = Client.new(
+name: 'Amazon'
 )
+client3.photo.attach(io: file, filename: "amazon.png", content_type: "image/png")
+client3.save
 
-client4 = Client.create(
+file = URI.open("https://1000logos.net/wp-content/uploads/2016/10/Avon-logo.jpg")
+client4 = Client.new(
   name: 'Avon'
 )
+client4.photo.attach(io: file, filename: "avon.png", content_type: "image/png")
+client4.save
 
+client5 = Client.create(
+  name: 'Sadia'
+)
+
+# Step
 step1 = Step.create(
   name: 'Backlog',
   color: '#ED2E19',
@@ -108,11 +128,12 @@ step7 = Step.create(
   index: 7
 )
 
+# Task
 task1 = Task.create(
   title: 'Criar arte para campanha do feriado',
   description: 'Arte Facebook do Natal',
-  status: 'solicitado',
-  step_id: step2.id,
+  status: 'em andamento',
+  step_id: step4.id,
   deadline: Date.new(2023, 7, 10),
   archived: false,
   client: client1,
@@ -135,11 +156,95 @@ task2 = Task.create(
 task3 = Task.create(
   title: 'Verificar Performace',
   description: 'Campanha do Feriado do Natal',
-  status: 'solicitado',
-  step_id: step3.id,
+  status: 'em andamento',
+  step_id: step7.id,
   deadline: Date.new(2023, 7, 10),
   archived: false,
   client: client3,
+  user: pedro,
+  created_by: lucas.id,
+)
+
+task4 = Task.create(
+  title: 'Enviar contrato para cliente',
+  description: 'Pedir para o jurídico o modelo e enviar para cliente.',
+  status: 'solicitado',
+  step_id: step1.id,
+  deadline: Date.new(2023, 6, 24),
+  archived: false,
+  client: client5,
   user: may,
+  created_by: lucas.id,
+)
+
+task5 = Task.create(
+  title: 'Reunião de kickoff',
+  description: 'Alinhar expectativas do projeto',
+  status: 'solicitado',
+  step_id: step1.id,
+  deadline: Date.new(2023, 6, 26),
+  archived: false,
+  client: client1,
+  user: may,
+  created_by: lucas.id,
+)
+
+task6 = Task.create(
+  title: 'Faturar a nova campanha de batom',
+  description: 'Visita ao escritório do cliente',
+  status: 'solicitado',
+  step_id: step1.id,
+  deadline: Date.new(2023, 6, 28),
+  archived: false,
+  client: client4,
+  user: may,
+  created_by: lucas.id,
+)
+
+task7 = Task.create(
+  title: 'Kickoff campanha de perfumes',
+  description: '',
+  status: 'em andamento',
+  step_id: step2.id,
+  deadline: Date.new(2023, 6, 28),
+  archived: false,
+  client: client4,
+  user: may,
+  created_by: lucas.id,
+)
+
+task8 = Task.create(
+  title: 'Problema no pagamento',
+  description: 'Parâmetro de pagamento errado já corrigido',
+  status: 'concluído',
+  step_id: step2.id,
+  deadline: Date.new(2023, 6, 28),
+  archived: false,
+  client: client2,
+  user: may,
+  created_by: lucas.id,
+)
+
+task9 = Task.create(
+  title: 'Envio da campanha para redes sociais',
+  description: 'aprovação da campanha',
+  status: 'em aprovação',
+  step_id: step5.id,
+  deadline: Date.new(2023, 6, 17),
+  archived: false,
+  client: client4,
+  user: augusto,
+  created_by: lucas.id,
+)
+
+task9 = Task.create(
+  title: 'Análise de copy',
+  description: 'Avaliar direitos autorais e copy',
+  status: 'refação',
+  step_id: step3.id,
+  deadline: Date.new(2023, 6, 17),
+  archived: false,
+  client: client2,
+  user: augusto,
   created_by: lucas.id,
 )
