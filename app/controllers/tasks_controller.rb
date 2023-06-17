@@ -4,13 +4,16 @@ class TasksController < ApplicationController
   def index
     @steps = Step.all.order(index: :asc)
     @client = params[:client_name]
+
     if params[:client_name] && params[:client_name] != ""
       @tasks = Task.includes(:client).where("clients.name = ?", params[:client_name]).references(:clients)
+
       if params[:responsible_id] && params[:responsible_id] != ""
         @tasks = @tasks.where(user_id: params[:responsible_id])
       end
     elsif params[:client_name] == ""
       @tasks = Task.all
+
       if params[:responsible_id] && params[:responsible_id] != ""
         @tasks = @tasks.where(user_id: params[:responsible_id])
       end
