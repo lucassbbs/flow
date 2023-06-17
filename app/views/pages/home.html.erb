@@ -1,13 +1,11 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.8)), url(<%= image_path 'banner.jpg' %>);">
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.8)), url(<%= image_path 'banner-2.jpg' %>);">
   <div class="container">
     <h1><strong>eFloow</strong> a melhor plataforma para <span data-controller="typed-js"></span></h1>
     <p>Uma solução completa para criar workflows sem burocracia e otimizar seu tempo.</p>
-    <a class="btn-ghost" href="#">Solicite uma demonstração</a>
-    <a class="btn-gradient" href="#">Comece já</a>
+    <%= link_to "Solicite uma demonstração", demo_path, class: "btn-ghost" %>
+    <%= link_to "Comece já", new_user_registration_path, class: "btn-gradient" %>
   </div>
 </div>
-
-
 
 <div class="container card-product mt-5">
   <div class="card-product-infos">
@@ -90,7 +88,9 @@
         <span>Operações</span>
       </div>
     </div>
-    <a class="btn-gradient selection mt-5" href="#">Comece já</a>
+    <div class="my-5 d-flex justify-content-center">
+    <%= link_to "Comece já", new_user_registration_path, class: "btn-ghost" %>
+    </div>
   </div>
 </div>
 

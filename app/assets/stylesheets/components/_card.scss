@@ -241,3 +241,24 @@
 .box-7:hover {
   border: 2px solid #FF7575;
 }
+
+.demo {
+width: 800px;
+margin-right: 60px;
+}
+
+.demo-form {
+  background: linear-gradient(#2030d8, #2739FF);
+  width: 500px;
+  height: 320px;
+  border-radius: 15px;
+  margin-right: 40px;
+  justify-content: center;
+}
+
+.demo-form h2 {
+  color: white;
+  font-size: 25px;
+  margin: 15px;
+  margin-left: 15px;
+}

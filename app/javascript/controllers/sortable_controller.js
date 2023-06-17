@@ -14,6 +14,7 @@ export default class extends Controller {
         filter: '.filtered',
         onEnd: (event) => {
           let url = event.originalEvent.dataTransfer.getData("application/drag-key")
+          console.log(url)
           const csrfToken = document.head.querySelector("[name='csrf-token']").content;
 
           fetch(url, {

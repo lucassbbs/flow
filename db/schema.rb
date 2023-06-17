@@ -69,6 +69,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_10_145805) do
     t.datetime "updated_at", null: false
     t.integer "user_id"
     t.integer "created_by"
+    t.integer "position"
     t.bigint "step_id"
     t.index ["client_id"], name: "index_tasks_on_client_id"
     t.index ["created_by"], name: "index_tasks_on_created_by"
