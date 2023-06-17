@@ -7,7 +7,7 @@
         <%= form.select :client_name, options_for_select(Client.all.pluck(:name), selected: request.query_parameters[:client_name] != "" && request.query_parameters[:client_name].present? ? Client.find_by_name(request.query_parameters[:client_name])&.name : "Cliente"), { include_blank: 'Cliente' }, class: "custom-select" %>
         <%= form.select :responsible_id, options_for_select(Task.test, selected: request.query_parameters[:responsible_id] != "" && request.query_parameters[:responsible_id].present? ? User.find(request.query_parameters[:responsible_id])&.id : "Responsável"), { include_blank: 'Responsável' }, class: "custom-select" %>
         <%= form.submit "Buscar", class: "btn btn-gradient ms-1" %>
-        <%= link_to "Limpar", root_path, class: "btn btn-gradient ms-1" %>
+        <%= link_to "Limpar", root_path, class: "btn btn-gray ms-1" %>
       <% end %>
     </div>
   </div>
