@@ -82,4 +82,31 @@
   background: linear-gradient(#2030d8, #2739FF);
   transition: background 0.3s ease;
   text-decoration: none;
+  &:hover {
+    color: #0F60C4;
+    border-color: #0F60C4;
+    background: white !important;
+  }
+}
+
+.btn-ghost-demo {
+  color: white;
+  border: 1px solid #ffffff;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: 600;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-ghost-demo:hover {
+  background: white;
+  opacity: 0.9;
+}
+
+.btn-cancel {
+  color: var(--bs-link-color);
+  text-decoration: underline;
+  background-color: white;
+  border: none;
 }

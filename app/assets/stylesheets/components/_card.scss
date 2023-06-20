@@ -245,20 +245,38 @@
 .demo {
 width: 800px;
 margin-right: 60px;
+margin-left: 40px;
+font-family: "Montserrat", "sans-serif";
 }
 
-.demo-form {
-  background: linear-gradient(#2030d8, #2739FF);
-  width: 500px;
-  height: 320px;
+.demo strong {
+  color: #0F60C4;;
+}
+
+.demo h2 {
+  font-weight: 600;
+}
+
+.demo p {
+  font-weight: 500;
+  color: rgb(49, 49, 49);
+}
+
+.card-demo {
+  height: 400px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
   border-radius: 15px;
-  margin-right: 40px;
-  justify-content: center;
 }
 
-.demo-form h2 {
-  color: white;
-  font-size: 25px;
-  margin: 15px;
-  margin-left: 15px;
+.card-help {
+  height: 500px;
+  width: 600px;
+  background: white;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  display: flex;
+  align-items: center;
+  border-radius: 15px;
 }

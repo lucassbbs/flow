@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   get "/setup", to: "pages#setup"
   get "/demo", to: "pages#demo"
   get "/user", to: "pages#user"
+  get "/helpform", to: "pages#helpform"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :tasks, except: :index
   resources :clients

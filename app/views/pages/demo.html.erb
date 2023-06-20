@@ -1,24 +1,39 @@
-<div class="container card-product mt-5">
+<div class="container card-demo mt-5">
   <div class="card-product-infos demo">
     <h2>Aumente a eficiência da sua empresa com o <strong>eFloow.</strong></h2>
     <p>Preencha seus dados abaixo e solicite uma demonstração. Descubra como o eFloow pode simplificar suas operações, otimizar a gestão de tarefas e impulsionar a produtividade da sua equipe.</p>
   </div>
 
-  <form class="demo-form">
-    <h2>Agendar demonstração</h2>
-    <div>
-      <input type="text" name="name" placeholder="Seu nome" required>
-    </div>
-    <div>
-      <input type="text" name="company" placeholder="Sua empresa" required>
-    </div>
-    <div>
-     <input type="email" name="email" placeholder="Seu e-mail" required>
-    </div>
-    <div>
-      <input type="submit" value="Enviar">
-    </div>
-  </form>
+<div class="form-group-div">
+  <div class="mx-4 my-2">
+    <p>Agendar demonstração</p>
+    <form action="/enviar_dados" method="post">
+      <div class="form-group">
+        <label for="nome">
+        <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+      </div>
+
+      <div class="form-group">
+        <label for="empresa">
+        <input type="text" id="empresa" name="empresa" placeholder="Digite o nome da empresa" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">
+        <input type="email" id="email" name="email" placeholder="Digite seu e-mail" required>
+      </div>
+
+      <div class="form-group">
+        <label class="label-form" for="data-horario">Selecione a melhor data e horário:</label>
+        <input type="datetime-local" id="data-horario" name="data_horario" required>
+      </div>
+
+      <%= link_to "Enviar", root_path, class:"btn-ghost-demo pt-2" %>
+    </form>
+  </div>
+</div>
+
+
 
 
 </div>
