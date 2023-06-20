@@ -32,6 +32,7 @@ class TasksController < ApplicationController
 
   def update
     new_step_id = params[:task][:step].to_i
+    params = task_params
     if params[:client]
       client_name = params[:client]
       params[:client] = Client.where(name:client_name)[0]
@@ -43,7 +44,9 @@ class TasksController < ApplicationController
       responsible_last_name = responsible_array_name[1]
       params[:user] = User.where(first_name: responsible_first_name, last_name: responsible_last_name)[0]
     end
-    @task.step_id = new_step_id
+    @task.update(task_params)
+    @task.step_id = new_step_id unless new_step_id.zero?
+    # raise
     if @task.save
       redirect_to tasks_path(@task)
     end
