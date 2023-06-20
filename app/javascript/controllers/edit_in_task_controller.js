@@ -84,7 +84,8 @@ export default class extends Controller {
   editDeadline() {
     const deadlineDiv = this.deadlineDivTarget
     if (!deadlineDiv.classList.contains('input-active')) {
-      const deadlineName = deadlineDiv.innerHTML;
+      const initialDeadlineName = document.getElementById('deadline-div').innerHTML.split('/');
+      const deadlineName = `20${initialDeadlineName[2]}-${initialDeadlineName[1]}-${initialDeadlineName[0]}`;
       deadlineDiv.innerHTML = '';
       const node = document.createElement("input");
       node.classList.add("task-main-card__input-text");
@@ -92,11 +93,35 @@ export default class extends Controller {
       node.setAttribute('id', 'task_deadline');
       node.setAttribute('type', 'date');
       node.setAttribute('name', 'task[deadline]');
+      node.setAttribute('data-action','change->edit-in-task#styleDeadline')
+      node.style.backgroundColor = 'transparent';
       node.classList.add('task-main-card__input');
       deadlineDiv.appendChild(node);
       deadlineDiv.classList.add("input-active")
     }
     this.showButtons();
+  }
+
+  styleDeadline(){
+    var today = new Date();
+    var dd = String(today.getDate()).padStart(2, '0');
+    var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+    var yyyy = today.getFullYear();
+    today = yyyy + '-' + mm + '-' + dd;
+    const deadlineDiv = document.getElementById('deadline-div');
+    const deadlineInput = document.getElementById('task_deadline');
+    const deadline = task_deadline.value;
+    if (deadline > today) {
+      deadlineDiv.style.backgroundColor = '#88d279';
+    }
+    if (deadline < today) {
+      deadlineDiv.style.backgroundColor = '#ff5b5b';
+    }
+
+    if (deadline == today) {
+      deadlineDiv.style.backgroundColor = '#fff65b';
+    }
+
   }
 
   editStatus() {
@@ -159,8 +184,8 @@ export default class extends Controller {
       console.log(nodeValue);
       console.log(node);
       node.setAttribute('data-action','change->edit-in-task#styleStep')
-      node.setAttribute('id', 'task_step_id')
-      node.setAttribute('name', 'task[step_id]')
+      node.setAttribute('id', 'task_step')
+      node.setAttribute('name', 'task[step]')
       steps.forEach(step => {
         let stepNode = document.createElement("option");
         stepNode.value = step.id;
