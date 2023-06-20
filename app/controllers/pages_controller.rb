@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home, :demo ]
+  skip_before_action :authenticate_user!, only: [ :home, :demo, :helpform ]
 
   def home
   end
@@ -12,5 +12,8 @@ class PagesController < ApplicationController
 
   def user
     @users = User.all
+  end
+
+  def helpform
   end
 end

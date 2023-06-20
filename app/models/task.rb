@@ -1,6 +1,6 @@
 class Task < ApplicationRecord
-  #STATUS = ['solicitado','aprovado','concluído','em andamento','em aprovação','pendente','refação']
-  #STEPS = ['backlog', 'customer success', 'copy writing', 'design', 'mídia', 'inbound', 'performance']
+  #STATUS = ['Solicitado','Aprovado','Concluído','Em andamento','Em aprovação','Pendente','Refação']
+  #STEPS = ['Backlog', 'Customer Success', 'Copy Writing', 'Design', 'Mídia', 'Inbound', 'Performance']
   validates :title, :status, :client_id, :deadline, presence: true
   #validates :status, inclusion: { in: STATUS }
   #validates :step, inclusion: { in: STEPS }

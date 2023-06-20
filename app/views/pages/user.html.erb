@@ -1,15 +1,35 @@
-<div class="container">
+<div class="container mt-4">
+  <div class="d-flex align-items-center justify-content-between">
+    <h1 class="title-home ms-3" >Usuários</h1>
+  </div>
+
+  <div class="search row justify-content-right m-0">
+    <div class=" index-form col-sm-4 my-4">
+     <%= form_with url: user_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Digite o nome do usuário" %>
+          <%= submit_tag "Buscar", name: "", class: "btn btn-gradient ms-1" %>
+          <%= link_to "Limpar", user_path(@client), class: "btn-gray ms-1 align-self-center" %>
+      <% end %>
+    </div>
+  </div>
+</div>
+
+<div class="container my-5">
   <% @users.each do |user| %>
-    <div class="row justify-content-center mb-3">
+    <div class="row justify-content-left mb-3">
       <div class="col-6">
         <div class="card-clients">
           <div class="ml-auto p-5 w-100">
             <div class="client-info d-flex justify-content-between align-items-center">
-              <h2><%= "#{user.first_name} #{user.last_name}" %></h2>
+              <h3><%= "#{user.first_name} #{user.last_name}" %></h3>
+            </div>
+              <div class="client-info d-flex justify-content-between align-items-center">
+              <h2><%= user.role %></h2>
             </div>
           </div>
         </div>
       </div>
     </div>
   <% end %>
+</div>
 </div>
