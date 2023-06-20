@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   end
   patch "/steps", to: "steps#reorder"
   get "/setup", to: "pages#setup"
+  get "/demo", to: "pages#demo"
+  get "/user", to: "pages#user"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   resources :tasks, except: :index
   resources :clients

@@ -1,15 +1,14 @@
 .btn_red {
-  background-color: #ED2E19;
-  color: #ffffff;
-  padding: 10px 20px;
-  border: none;
+  color: white;
+  padding: 8px 24px;
   border-radius: 4px;
-  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(#e41616, #c80000);
+  transition: background 0.3s ease;
   text-decoration: none;
 }
 
 .btn_red:hover {
-  color: #ffffff;
-  background-color: #da5344;
-  text-decoration: none;
+  background: linear-gradient(#ce1212, #df1d1d);
+  color: white;
 }

@@ -1,34 +1,41 @@
 <div class="container">
   <div class="row justify-content-between">
     <div class="col-2">
-      <h2 class="title-home ms-3">Cliente</h2>
-      <%= link_to "Cadastrar", new_client_path, class: "btn_violet" %>
     </div>
-    <div class="col-6 my-3">
+    <div class="col-12 my-5 d-flex justify-content-around align-items-center">
+      <h2 class="title-home">Cliente</h2>
       <%= form_with url: clients_path, method: :get, class: "d-flex" do %>
         <%= text_field_tag :query, params[:query], class: "form-control", placeholder: "Digite uma palavra-chave" %>
-        <%= submit_tag "Search", name: "", class: "btn_blue ms-2" %>
+        <div class="d-flex">
+          <%= submit_tag "Buscar", name: "", class: "btn btn-gradient ms-1" %>
+          <%= link_to "Limpar", clients_path(@client), class: "btn-gray ms-1 align-self-center" %>
+        </div>
       <% end %>
+      <%= link_to "Cadastrar", new_client_path, class: "btn_violet" %>
     </div>
   </div>
-  <hr>
-  <% @clients.each do |client| %>
-    <div class="row justify-content-center mb-3">
-      <div class="col-6">
-        <div class="card-clients">
-          <% if client.photo.attached? %>
-            <%= cl_image_tag(client.photo.key) %>
-          <% else %>
-            <%= link_to "Photo.jpg", client_path(client), class: "btn bolder_img" %>
+</div>
+
+<hr>
+
+<% @clients.each do |client| %>
+  <div class="row justify-content-center mb-3">
+    <div class="col-6">
+      <div class="card-clients">
+        <% if client.photo.attached? %>
+          <%= cl_image_tag(client.photo.key) %>
+        <% else %>
+          <%= link_to client_path(client), class: "btn bolder_img" do %>
+            <i class="fa-solid fa-image fa-2x"></i>
           <% end %>
-          <div class="ml-auto p-5 w-100">
-            <div class="client-info d-flex justify-content-between align-items-center">
-              <h2><%= client.name %></h2>
-              <%= link_to "Visualizar", client_path(client), class: "btn_blue" %>
-            </div>
+        <% end %>
+        <div class="ml-auto p-5 w-100">
+          <div class="client-info d-flex justify-content-between align-items-center">
+            <h2><%= client.name %></h2>
+            <%= link_to "Visualizar", client_path(client), class: "btn btn-gradient ms-1" %>
           </div>
         </div>
       </div>
     </div>
-  <% end %>
-</div>
+  </div>
+<% end %>

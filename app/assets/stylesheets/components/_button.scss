@@ -55,7 +55,6 @@
   border-radius: 4px;
   font-weight: 600;
   background: rgb(231, 231, 231);
-  border: 1px solid rgb(100, 100, 100);
   transition: background 0.3s ease;
   text-decoration: none;
 }
@@ -64,4 +63,23 @@
   background: rgb(231, 231, 231);
   color: rgb(100, 100, 100);
   border: 1px solid rgb(100, 100, 100);
+}
+
+
+#button-container {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  padding: 10px;
+}
+
+.fixed-button {
+  color: white;
+  padding: 8px 24px;
+  border-radius: 15px;
+  border: solid 1px white;
+  font-weight: 600;
+  background: linear-gradient(#2030d8, #2739FF);
+  transition: background 0.3s ease;
+  text-decoration: none;
 }

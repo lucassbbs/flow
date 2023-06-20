@@ -3,6 +3,7 @@ import Sortable from "sortablejs"
 
 export default class extends Controller {
   static targets = ["container"]
+  static values = {}
 
   connect() {
     this.variable = this.element.querySelector(".card-task").dataset.sortableUrlValue
@@ -14,6 +15,7 @@ export default class extends Controller {
         filter: '.filtered',
         onEnd: (event) => {
           let url = event.originalEvent.dataTransfer.getData("application/drag-key")
+          console.log(event.to)
           const csrfToken = document.head.querySelector("[name='csrf-token']").content;
 
           fetch(url, {
