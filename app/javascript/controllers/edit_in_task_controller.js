@@ -159,8 +159,8 @@ export default class extends Controller {
       console.log(nodeValue);
       console.log(node);
       node.setAttribute('data-action','change->edit-in-task#styleStep')
-      node.setAttribute('id', 'task_step_id')
-      node.setAttribute('name', 'task[step_id]')
+      node.setAttribute('id', 'task_step')
+      node.setAttribute('name', 'task[step]')
       steps.forEach(step => {
         let stepNode = document.createElement("option");
         stepNode.value = step.id;
