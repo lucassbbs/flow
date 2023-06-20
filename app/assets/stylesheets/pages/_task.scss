@@ -5,13 +5,20 @@
 .task-main-card{
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
   padding: 10px;
-  margin: 20px 0 0 20px;
+  margin: 20px 0 40px 20px;
   border-radius: 10px;
   background-color: white;
+  h1{
+    color: #3b3b3b;
+    font-family: Montserrat;
+    font-weight: 700;
+  }
 }
 
-.task-main-card__title{
-  color: #7e7e7e;
+
+.task-main-card__title-div{
+  display: flex;
+  justify-content: space-between;
 }
 
 
@@ -45,7 +52,6 @@
   border: none;
   text-align: center;
   vertical-align: middle;
-  border-radius: 25px;
   padding-top: 7px;
   color: #ffffff;
   font-weight: 700;
