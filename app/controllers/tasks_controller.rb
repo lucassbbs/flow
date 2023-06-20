@@ -44,7 +44,7 @@ class TasksController < ApplicationController
       responsible_last_name = responsible_array_name[1]
       params[:user] = User.where(first_name: responsible_first_name, last_name: responsible_last_name)[0]
     end
-    @task.update(task_params)
+    @task.update(params)
     @task.step_id = new_step_id unless new_step_id.zero?
     # raise
     if @task.save
