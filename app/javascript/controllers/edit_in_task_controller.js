@@ -84,7 +84,8 @@ export default class extends Controller {
   editDeadline() {
     const deadlineDiv = this.deadlineDivTarget
     if (!deadlineDiv.classList.contains('input-active')) {
-      const deadlineName = deadlineDiv.innerHTML;
+      const initialDeadlineName = document.getElementById('deadline-div').innerHTML.split('/');
+      const deadlineName = `20${initialDeadlineName[2]}-${initialDeadlineName[1]}-${initialDeadlineName[0]}`;
       deadlineDiv.innerHTML = '';
       const node = document.createElement("input");
       node.classList.add("task-main-card__input-text");

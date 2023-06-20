@@ -32,7 +32,7 @@
           </div>
           <div class="mb-5 task-main-card__info-field">
             <div class="task-main-card__label"><p>Deadline</p></div>
-            <div class="task-main-card__text" data-edit-in-task-target="deadlineDiv" data-action="dblclick->edit-in-task#editDeadline"><%= @task.deadline %></div>
+            <div class="task-main-card__text" id="deadline-div" data-edit-in-task-target="deadlineDiv" data-action="dblclick->edit-in-task#editDeadline"><%= @task.deadline.strftime("%d/%m/%y") %></div>
           </div>
           <div class="mb-5 task-main-card__info-field">
             <div class="task-main-card__label"><p>Solicitante</p></div>
