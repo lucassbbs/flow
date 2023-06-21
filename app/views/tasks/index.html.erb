@@ -22,6 +22,9 @@
         <div class="tasks-conteiner" data-sortable-target="container" data-filter=<%= step.id %>>
         <% @tasks.select do |t|%>
           <% if t.step_id == step.id %>
+            <% deadline_color = '#88d279' if t.deadline > Date.today  %>
+            <% deadline_color = '#ff5b5b' if t.deadline < Date.today  %>
+            <% deadline_color = '#fff65b' if t.deadline == Date.today  %>
             <%= link_to task_path(t), class:"text-decoration-none" do %>
               <div id="results" class="card-task handle"
                   data-action="dragstart->sortable#dragstart dragover->sortable#dragover dragenter->sortable#dragenter drop->sortable#drop dragend->sortable#dragend"
@@ -49,7 +52,7 @@
                     <p>Prazo</p>
                   </div>
                   <div class="col-9">
-                    <p class="text-box"> <%= t.deadline.strftime("%d/%m/%Y") %> </p>
+                    <p class="text-box"  style="background-color:<%= deadline_color%>;"> <%= t.deadline.strftime("%d/%m/%Y") %> </p>
                   </div>
                 </div>
                 <div class="row">
