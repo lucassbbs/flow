@@ -1,13 +1,13 @@
 <%= simple_form_for(client) do |c| %>
-  <%= c.input :name, label: "Nome" %>
+  <%= c.input :name, label: "Nome", input_html: { class: "" } %>
   <%= c.input :photo, as: :file, label: "Foto do Cliente" %>
   <div class='form-submit mt-5'>
     <% if request.fullpath.split('/')[-1] == 'edit' %>
-      <%= c.submit 'Editar Cliente', :class => 'btn btn_blue mb-3' %>
+      <%= c.submit 'Editar Cliente', :class => 'btn btn-gradient ms-1' %>
     <% else %>
       <div class="d-flex justify-content-around">
-        <%= c.submit 'Salvar', :class => 'btn btn_blue mb-3' %>
-        <%= link_to "Cancelar", clients_path(client), class: "btn btn_blue mb-3" %>
+        <%= c.submit 'Salvar', :class => 'btn btn-gradient ms-1' %>
+        <%= link_to "Voltar", clients_path(client), class: "btn-gray ms-1" %>
       </div>
     <% end %>
   </div>

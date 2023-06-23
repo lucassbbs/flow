@@ -23,7 +23,7 @@
     <div class="col-6">
       <div class="card-clients">
         <% if client.photo.attached? %>
-          <%= cl_image_tag(client.photo.key) %>
+          <%= cl_image_tag(client.photo.key, class: "border border-light", style: "object-fit: contain;") %>
         <% else %>
           <%= link_to client_path(client), class: "btn bolder_img" do %>
             <i class="fa-solid fa-image fa-2x"></i>

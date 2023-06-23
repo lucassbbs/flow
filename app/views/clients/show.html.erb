@@ -1,10 +1,10 @@
 <div class="container mt-3">
   <h1>Editar Cliente</h1>
   <hr>
-  <div class="d-flex justify-content-around mb-5 mt-3">
-    <div class="task-main-card text-center p-5">
+  <div class="d-flex justify-content-around">
+    <div class="task-main-card text-center p-5 pt-4 mb-5">
       <% if @client.photo.attached? %>
-        <img src="<%= url_for(@client.photo) %>" alt="client_photo" class="mb-1" style="width: 300px; height: 300px; object-fit: contain;">
+        <img src="<%= url_for(@client.photo) %>" alt="client_photo" class="rounded-circle border border-1 mb-3" style="width: 220px; height: 220px; object-fit: contain;">
       <% else %>
         <%= link_to client_path(@client), class: "btn bolder_img" do %>
           <i class="fa-solid fa-image fa-2x"></i>
@@ -16,12 +16,12 @@
         <%= c.input :photo, as: :file, label: "Foto do Cliente" %>
         <div class='form-submit mt-3'>
           <% if request.fullpath.split('/')[-1] == 'edit' %>
-            <%= c.submit 'Editar Cliente', class: 'btn btn_blue mb-3' %>
+            <%= c.submit 'Editar Cliente', class: 'btn btn_blue' %>
           <% else %>
             <div class="d-flex justify-content-between">
-              <%= link_to "Voltar", clients_path(@client), class: "btn btn-gradient ms-1 align-self-center" %>
-              <%= c.submit 'Salvar', class: 'btn btn-gradient ms-1 align-self-center' %>
+              <%= link_to "Voltar", clients_path(@client), class: "btn-gray ms-1 align-self-center" %>
               <%= link_to "Deletar", client_path(@client), data: { turbo_method: :delete, turbo_confirm: "Tem certeza que deseja deletar este cliente?" }, class: "btn btn_red ms-1 align-self-center" %>
+              <%= c.submit 'Salvar', class: 'btn btn-gradient ms-1 align-self-center' %>
             </div>
           <% end %>
         </div>
